@@ -4,22 +4,9 @@ to install
 
 ```
 cd ~
-git clone git@github.com:Jwhiles/.vim.git
+git clone git@github.com:Jwhiles/vimmy.git .vim
 ln -s ~/.vim/vimrc ~/.vimrc
-cd ~/.vim
-git submodule init
-git submodule update
 ```
 
-## Extras
-upgrade all plugins
-`git submodule foreach git pull origin master`
-
-
 ## To-Do
-
-Make an install.sh script
-
 split .vimrc into seperate files
-
-find a way to make ctrl-p not search my entire computer. 
