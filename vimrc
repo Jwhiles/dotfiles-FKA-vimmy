@@ -223,6 +223,8 @@ let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|lib|es|DS_Store)|(\.(swp|ico|git|svn))$'
 
+" ---- fugitive -----
+:set diffopt+=vertical
 
 
 " ---- syntastic ------
