@@ -4,8 +4,8 @@ to install
 
 ```
 cd ~
-git clone git@github.com:Jwhiles/vimmy.git .vim
-ln -s ~/.vim/vimrc ~/.vimrc
+git clone git@github.com:Jwhiles/vimmy.git .vim && cd ~/.vim
+chmod +x setup.sh && ./setup.sh
 ```
 
 ## To-Do
