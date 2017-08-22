@@ -188,6 +188,9 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
+" trim that whitespace
+map <leader>tw :%s/\s\+$//e<cr>
+
 "------------------------------------------------------------
 " appearance
 
