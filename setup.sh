@@ -28,6 +28,9 @@ git clone git@github.com:mxw/vim-jsx.git vim-jsx
 echo "vim-surround"
 git clone git@github.com:tpope/vim-surround.git vim-surround
 
+echo "typescript-vim"
+git clone git@github.com:leafgarland/typescript-vim.git typescript-vim
+
 
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc
