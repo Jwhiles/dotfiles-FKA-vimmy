@@ -34,6 +34,9 @@ git clone git@github.com:leafgarland/typescript-vim.git typescript-vim
 echo "elm-vim"
 git clone git@github.com:ElmCast/elm-vim.git elm-vim
 
+echo "ack - for searching your project"
+git clone git@github.com:mileszs/ack.vim.git ack.vim
+
 
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc

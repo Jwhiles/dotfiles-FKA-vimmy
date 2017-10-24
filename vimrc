@@ -191,6 +191,9 @@ map <leader>t<leader> :tabnext
 " trim that whitespace
 map <leader>tw :%s/\s\+$//e<cr>
 
+" search for things with ack
+nnoremap <leader>a :Ack<space>
+
 "------------------------------------------------------------
 " appearance
 
