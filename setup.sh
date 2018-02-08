@@ -37,6 +37,8 @@ git clone git@github.com:ElmCast/elm-vim.git elm-vim
 echo "ack - for searching your project"
 git clone git@github.com:mileszs/ack.vim.git ack.vim
 
+echo "fireplace - for doing wild things with clojure"
+git clone git@github.com:tpope/vim-fireplace.git vim-fireplace
 
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc

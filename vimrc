@@ -257,3 +257,9 @@ let g:syntastic_html_tidy_exec = 'tidy5'
 " vim-jsx
 let g:jsx_ext_required = 0
 
+" ---- clojure stuff ----
+au Filetype clojure nmap <leader>e :%Eval<CR>
+au Filetype clojure nmap <leader>E :Eval<CR>
+au Filetype clojure nmap <c-c><c-k> :Require<cr>  
+
+
