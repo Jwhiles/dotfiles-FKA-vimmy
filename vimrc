@@ -216,8 +216,8 @@ set listchars=tab:▸\ ,eol:¬
 "
 " ----- NERDTree ------
 " open NERDTree on startup if no other file is opened
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " map a shortcut to NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -227,7 +227,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|lib|es|DS_Store)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|bundle|lib|es|DS_Store)|(\.(swp|ico|git|svn))$'
 
 " ---- fugitive -----
 :set diffopt+=vertical
@@ -258,8 +258,22 @@ let g:syntastic_html_tidy_exec = 'tidy5'
 let g:jsx_ext_required = 0
 
 " ---- clojure stuff ----
-au Filetype clojure nmap <leader>e :%Eval<CR>
-au Filetype clojure nmap <leader>E :Eval<CR>
-au Filetype clojure nmap <c-c><c-k> :Require<cr>  
+" au Filetype clojure nmap <leader>E :%Eval<CR>
+" au Filetype clojure nmap <leader>e :Eval<CR>
+" au Filetype clojure nmap <c-c><c-k> :Require<cr>  
 
 
+
+" -- testing 
+map <leader>e :edit %%
+map <leader>v :view %%
+
+:nnoremap ,, <C-^><CR>
+ 
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" we set winheight to be huge before winminheight, the winminheight set will
+" fail.
+set winheight=5
+set winminheight=5
+set winheight=999
