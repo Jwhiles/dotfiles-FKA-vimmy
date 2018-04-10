@@ -28,9 +28,6 @@ git clone git@github.com:mxw/vim-jsx.git vim-jsx
 echo "vim-surround"
 git clone git@github.com:tpope/vim-surround.git vim-surround
 
-echo "typescript-vim"
-git clone git@github.com:leafgarland/typescript-vim.git typescript-vim
-
 echo "elm-vim"
 git clone git@github.com:ElmCast/elm-vim.git elm-vim
 
@@ -39,6 +36,9 @@ git clone git@github.com:mileszs/ack.vim.git ack.vim
 
 echo "fireplace - for doing wild things with clojure"
 git clone git@github.com:tpope/vim-fireplace.git vim-fireplace
+
+echo "vim prettier. Because code formatting is important"
+git clone git@github.com:prettier/vim-prettier.git vim-prettier
 
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc
