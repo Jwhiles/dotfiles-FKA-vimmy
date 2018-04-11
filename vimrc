@@ -1,4 +1,4 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
+"uto URL: http://vim.wikia.com/wiki/Example_vimrc
 " Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
 " Description: A minimal, but feature rich, example .vimrc. If you are a
 "              newbie, basing your first .vimrc on this file is a good choice.
@@ -181,12 +181,14 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" short cuts for working with tabs
+" short cuts for working with tabs and splits
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
+
+map <leader>o :only<cr> " close all other splits
 
 " trim that whitespace
 map <leader>tw :%s/\s\+$//e<cr>
@@ -277,3 +279,9 @@ set winwidth=84
 set winheight=5
 set winminheight=5
 set winheight=999
+
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
