@@ -2,7 +2,7 @@ cd ~/.vim/bundle
 echo "installing plugins"
 
 echo "ctrlp"
-git clone git@github.com:kien/ctrlp.vim.git ctrlp
+git clone git@github.com:ctrlpvim/ctrlp.vim.git ctrlp
 
 echo "nerdtree"
 git clone git@github.com:scrooloose/nerdtree.git nerdtree
