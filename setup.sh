@@ -1,4 +1,4 @@
-cd ~/.vim/bundle
+mkdir ~/.vim/bundle && cd "$_"
 echo "installing plugins"
 
 echo "ctrlp"
