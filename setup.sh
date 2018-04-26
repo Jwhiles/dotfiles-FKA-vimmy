@@ -40,6 +40,9 @@ git clone git@github.com:tpope/vim-fireplace.git vim-fireplace
 echo "vim prettier. Because code formatting is important"
 git clone git@github.com:prettier/vim-prettier.git vim-prettier
 
+echo "adding purescript syntax highlighting"
+git clone https://github.com/raichoo/purescript-vim.git
+
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc
 
