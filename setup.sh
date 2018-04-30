@@ -1,14 +1,11 @@
 mkdir ~/.vim/bundle && cd "$_"
-echo "installing plugins"
+echo "installing pathogen plugins (deprecate this)"
 
 echo "ctrlp"
 git clone git@github.com:ctrlpvim/ctrlp.vim.git ctrlp
 
 echo "nerdtree"
 git clone git@github.com:scrooloose/nerdtree.git nerdtree
-
-echo "syntastic"
-git clone git@github.com:vim-syntastic/syntastic.git syntastic
 
 echo "vim-airline"
 git clone git@github.com:vim-airline/vim-airline.git vim-airline
@@ -42,6 +39,10 @@ git clone git@github.com:prettier/vim-prettier.git vim-prettier
 
 echo "adding purescript syntax highlighting"
 git clone https://github.com/raichoo/purescript-vim.git
+
+echo "adding native vim 8 plugins"
+mkdir -p ~/.vim/pack/git-plugins/start && cd "$_"
+git clone https://github.com/w0rp/ale.git ~/.vim/pack/git-plugins/start/ale
 
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc

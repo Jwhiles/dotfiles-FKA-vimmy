@@ -1,12 +1,4 @@
-"uto URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
-
-"------------------------------------------------------------
-" Features {{{1
+" Features 
 "
 " These options and commands enable some very useful features in Vim, that
 " no user should have to live without.
@@ -236,25 +228,14 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|bundle|lib|es|DS_Store)|(\.(swp
 :set diffopt+=vertical
 
 
-" ---- syntastic ------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
 " map leader key then s to open the location list
 :nnoremap <leader>s :lopen<CR>
 :nnoremap <leader>S :lclose<CR>
 
-" Use local node_modules script
-let g:syntastic_javascript_eslint_exe = '$(npm bin)/eslint'
-"
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_tidy_exec = 'tidy5'
+" ---- ALE ----
+let g:airline#extensions#ale#enabled = 1
+let g:ale_lint_delay = 1000
+
 
 " ---- syntax highlight js / jsx -----
 " vim-jsx
