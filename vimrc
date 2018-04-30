@@ -188,7 +188,8 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
-map <leader>o :only<cr> " close all other splits
+" close all other splits 
+map <leader>o :only<cr>
 
 " trim that whitespace
 map <leader>tw :%s/\s\+$//e<cr>
@@ -285,3 +286,7 @@ set winheight=999
     \   exe "normal g`\"" |
     \ endif
 
+"" prettier configuration
+let g:prettier#config#print_width = 100
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'es5'
