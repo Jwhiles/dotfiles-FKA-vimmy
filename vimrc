@@ -131,9 +131,6 @@ highlight ColorColumn ctermbg=23
  " In Git commit messages, also colour the 51st column (for titles)
 autocmd FileType gitcommit set colorcolumn+=51
 
-execute pathogen#infect()
-
-
 "------------------------------------------------------------
 " Indentation options {{{1
 "
