@@ -17,30 +17,8 @@ syntax on
 
 
 "------------------------------------------------------------
-" Must have options {{{1
-"
-" These are highly recommended options.
-
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
+" Using hidden to allow for easier file switching by suspending buffers
 set hidden
-
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
 
 " Better command-line completion
 set wildmenu
@@ -48,23 +26,19 @@ set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
 
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
+" Highlight searches
 set hlsearch
 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
+" Map escape to turn off search highlighting
+nnoremap <esc> :noh<return><esc>
+" needed so that vim still understands escape sequences
+nnoremap <esc>^[ <esc>^[]
+
+" Disable model lines to prevent possible security problems
+set nomodeline
 
 
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
+" --- Basic Usability Options --- 
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -104,11 +78,7 @@ set novisualbell
 " is unset, this does nothing.
 set t_vb=
 
-" Enable use of the mouse for all modes
-set mouse=a
-
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
+" Set the command window height to 2 lines
 set cmdheight=2
 
 " Display line numbers on the left
@@ -119,6 +89,7 @@ set number
 set notimeout ttimeout ttimeoutlen=200
 
 " Use <F11> to toggle between 'paste' and 'nopaste'
+" This can be used to prevent auto indentation from causing headaches
 set pastetoggle=<F11>
 
 " Force the cursor onto a new line after 80 characters
@@ -132,10 +103,6 @@ highlight ColorColumn ctermbg=23
 autocmd FileType gitcommit set colorcolumn+=51
 
 "------------------------------------------------------------
-" Indentation options {{{1
-"
-" Indentation settings according to personal preference.
-
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set tabstop=8
@@ -144,25 +111,13 @@ set softtabstop=2
 set shiftround
 set expandtab
 
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
-
-
 "------------------------------------------------------------
-" Mappings {{{1
-"
 " Useful mappings
 
 " Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 " which is the default
 map Y y$
 
-" Map escape to turn off search highlighting
-nnoremap <esc> :noh<return><esc>
-" needed so that vim still understands escape sequences
-nnoremap <esc>^[ <esc>^[]
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -245,12 +200,10 @@ let g:jsx_ext_required = 0
 
 
 
-" -- testing 
-map <leader>e :edit %%
-map <leader>v :view %%
-
+" quickly toggle to the last open file
 :nnoremap ,, <C-^><CR>
  
+" Handle resizing of panes when there are several open
 set winwidth=84
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
