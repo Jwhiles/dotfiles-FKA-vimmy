@@ -40,6 +40,9 @@ git clone git@github.com:prettier/vim-prettier.git vim-prettier
 echo "adding purescript syntax highlighting"
 git clone https://github.com/raichoo/purescript-vim.git
 
+echo "adding psc ide"
+git clone git@github.com:FrigoEU/psc-ide-vim.git
+
 echo "adding ale for asynchronous linting"
 git clone https://github.com/w0rp/ale.git
 
