@@ -1,4 +1,4 @@
-mkdir -p ~/.vim/pack/git-plugins/start && cd "$_"
+mkdir -p ~/.vim/pack/git-plugins/start && cd ~/.vim/pack/git-plugins/start
 echo "installing plugins"
 
 echo "ctrlp"
