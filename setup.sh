@@ -46,8 +46,17 @@ git clone git@github.com:FrigoEU/psc-ide-vim.git
 echo "adding ale for asynchronous linting"
 git clone https://github.com/w0rp/ale.git
 
+echo "vim tidal"
+git clone git@github.com:tidalcycles/vim-tidal.git
+
+echo "vim tmux nav"
+git clone git@github.com:christoomey/vim-tmux-navigator.git
+
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc
+
+echo "creating symlink to .tmux.conf"
+ln -s ~/.vim/.tmux.conf ~/.tmux.conf
 
 echo "done and done 👻 "
 
