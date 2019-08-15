@@ -1,3 +1,32 @@
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+"" Plug Install Plugins
+Plug 'dracula/vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-surround'
+Plug 'ElmCast/elm-vim'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-fireplace'
+Plug 'prettier/vim-prettier'
+Plug 'raichoo/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
+Plug 'w0rp/ale'
+Plug 'tidalcycles/vim-tidal'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'leafgarland/typescript-vim'
+call plug#end()
+
+
+"
 " Features 
 "
 " These options and commands enable some very useful features in Vim, that
@@ -14,6 +43,7 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
+color dracula
 
 
 "------------------------------------------------------------
@@ -222,3 +252,4 @@ set winheight=999
 let g:prettier#config#print_width = 100
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'es5'
+
