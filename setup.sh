@@ -52,11 +52,19 @@ git clone git@github.com:tidalcycles/vim-tidal.git
 echo "vim tmux nav"
 git clone git@github.com:christoomey/vim-tmux-navigator.git
 
+echo "typescript stuff"
+git clone git@github.com:leafgarland/typescript-vim.git
+
 echo "creating symlink to .vimrc"
 ln -s ~/.vim/vimrc ~/.vimrc
+
+echo "adding the appropirate nvim init file"
+mkdir -p ~/.config/nvim
+ln -s ~/.vim/init.vim ~/.config/nvim/init.vim
 
 echo "creating symlink to .tmux.conf"
 ln -s ~/.vim/.tmux.conf ~/.tmux.conf
 
 echo "done and done 👻 "
+
 
