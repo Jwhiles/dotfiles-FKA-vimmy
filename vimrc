@@ -168,6 +168,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " map a shortcut to NERDTree
 map <C-n> :NERDTreeToggle<CR>
+map <leader>tt :NERDTreeFind<CR>
 
 " ----- ctrlp.vim  ------
 let g:ctrlp_map = '<c-p>'
