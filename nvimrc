@@ -253,3 +253,4 @@ let g:prettier#config#print_width = 100
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'es5'
 
+let g:NERDTreeWinPos = "right"
