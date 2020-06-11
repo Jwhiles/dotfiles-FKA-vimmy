@@ -1,5 +1,7 @@
 # VIMRC AND THEM PLUGINS
 
+install  vim plug https://github.com/junegunn/vim-plug
+
 to install
 
 ```

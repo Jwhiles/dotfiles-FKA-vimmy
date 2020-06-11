@@ -25,6 +25,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'leafgarland/typescript-vim'
 call plug#end()
 
+augroup SyntaxSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
+augroup END
+
+
 
 "
 " Features 
@@ -204,11 +210,13 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/](bower_components|output|node_modules|bundle|build|es|DS_Store)|(\.(swp|ico|git|svn))$'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 nnoremap <leader>. :CtrlPTag<cr>             " Leader . to open cp-tags
 
 " ---- fugitive -----
 :set diffopt+=vertical
+:nnoremap <leader>gr :Ggrep <cword> <CR>
+
 
 
 " map leader key then s to open the location list
