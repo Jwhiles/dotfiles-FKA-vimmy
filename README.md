@@ -12,3 +12,5 @@ chmod +x setup.sh && ./setup.sh
 
 ## To-Do
 split .vimrc into seperate files
+
+

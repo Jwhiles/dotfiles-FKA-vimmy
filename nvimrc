@@ -13,14 +13,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-surround'
-Plug 'ElmCast/elm-vim'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-fireplace'
 Plug 'prettier/vim-prettier'
-Plug 'raichoo/purescript-vim'
-Plug 'FrigoEU/psc-ide-vim'
 Plug 'w0rp/ale'
-Plug 'tidalcycles/vim-tidal'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'leafgarland/typescript-vim'
 call plug#end()
@@ -33,7 +27,7 @@ augroup END
 
 
 "
-" Features 
+" Features
 "
 " These options and commands enable some very useful features in Vim, that
 " no user should have to live without.
@@ -74,7 +68,7 @@ nnoremap <esc>^[ <esc>^[]
 set nomodeline
 
 
-" --- Basic Usability Options --- 
+" --- Basic Usability Options ---
 
 " Use case insensitive search, except when using capital letters
 set ignorecase
@@ -168,10 +162,10 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>t<leader> :tabnext
 
-" close all other splits 
+" close all other splits
 map <leader>o :only<cr>
 
-" trim that whitespace
+" trim whitespace
 map <leader>tw :%s/\s\+$//e<cr>
 
 " stylish haskell
@@ -197,13 +191,11 @@ set listchars=tab:▸\ ,eol:¬
 " plugin related settings
 "
 " ----- NERDTree ------
-" open NERDTree on startup if no other file is opened
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " map a shortcut to NERDTree
 map <C-n> :NERDTreeToggle<CR>
+" open nerd tree at current file
 map <leader>tt :NERDTreeFind<CR>
+
 
 " ----- ctrlp.vim  ------
 let g:ctrlp_map = '<c-p>'
@@ -216,7 +208,6 @@ nnoremap <leader>. :CtrlPTag<cr>             " Leader . to open cp-tags
 " ---- fugitive -----
 :set diffopt+=vertical
 :nnoremap <leader>gr :Ggrep <cword> <CR>
-
 
 
 " map leader key then s to open the location list
@@ -232,24 +223,18 @@ let g:ale_lint_delay = 1000
 " vim-jsx
 let g:jsx_ext_required = 0
 
-" ---- clojure stuff ----
-" au Filetype clojure nmap <leader>E :%Eval<CR>
-" au Filetype clojure nmap <leader>e :Eval<CR>
-" au Filetype clojure nmap <c-c><c-k> :Require<cr>  
-
-
 
 " quickly toggle to the last open file
 :nnoremap ,, <C-^><CR>
- 
-" Handle resizing of panes when there are several open
-set winwidth=84
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-set winheight=5
-set winminheight=5
-set winheight=999
+
+" " Handle resizing of panes when there are several open
+" set winwidth=84
+" " We have to have a winheight bigger than we want to set winminheight. But if
+" " we set winheight to be huge before winminheight, the winminheight set will
+" " fail.
+" set winheight=5
+" set winminheight=5
+" set winheight=999
 
   autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
