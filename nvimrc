@@ -17,6 +17,7 @@ Plug 'prettier/vim-prettier'
 Plug 'w0rp/ale'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'leafgarland/typescript-vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 augroup SyntaxSettings
@@ -36,6 +37,9 @@ augroup END
 " have made, as well as sanely reset options when re-sourcing .vimrc
 set nocompatible
 
+" automatically update on file changes
+set autoread
+
 " Attempt to determine the type of a file based on its name and possibly its
 " contents. Use this to allow intelligent auto-indenting for each filetype,
 " and for plugins that are filetype specific.
@@ -43,7 +47,7 @@ filetype indent plugin on
 
 " Enable syntax highlighting
 syntax on
-color dracula
+color morning
 
 
 "------------------------------------------------------------
@@ -148,6 +152,8 @@ set expandtab
 " which is the default
 map Y y$
 
+" map jk to change mode
+inoremap jk <ESC>
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -247,3 +253,8 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#trailing_comma = 'es5'
 
 let g:NERDTreeWinPos = "right"
+
+
+
+map <Leader> <Plug>(easymotion-prefix)
+
