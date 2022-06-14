@@ -4,28 +4,55 @@
 call plug#begin('~/.vim/plugged')
 
 """ Plug Install Plugins
+" Collection of common configurations for the Nvim LSP client
+Plug 'neovim/nvim-lspconfig'
+
+" Completion framework
+Plug 'hrsh7th/nvim-cmp'
+
+" LSP completion source for nvim-cmp
+Plug 'hrsh7th/cmp-nvim-lsp'
+
+" Snippet completion source for nvim-cmp
+Plug 'hrsh7th/cmp-vsnip'
+
+" Other usefull completion sources
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-buffer'
+
+
 Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'dracula/vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'sbdchd/neoformat'
 Plug 'szw/vim-maximizer'
 Plug 'kassio/neoterm'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'neovim/nvim-lspconfig'
+" is this doing anything?
 Plug 'nvim-lua/completion-nvim'
 
+Plug 'prettier/vim-prettier'
 Plug 'scrooloose/nerdtree'
-"Plug 'tpope/vim-surround'
-"Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'git@github.com:rose-pine/neovim.git'
+Plug 'nvim-lua/plenary.nvim' 
+Plug 'ThePrimeagen/harpoon'
+
 call plug#end()
 
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
 
-set completeopt=menu,menuone,noselect " better autocomplete options
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
+
 set mouse=a " if I accidentally use the mouse
 set splitright " splits to the right
 set splitbelow " splits below
@@ -48,17 +75,15 @@ set updatetime=520 " time until update
 set undofile " persists undo tree
 filetype plugin indent on " enable detection, plugins and indents
 let mapleader = " " " space as leader key
-if (has("termguicolors"))
-  set termguicolors " better colors, but makes it sery slow!
-endif
+" if (has("termguicolors"))
+"   set termguicolors " better colors, but makes it sery slow!
+" endif
 let g:netrw_banner=0 " disable banner in netrw
 let g:netrw_liststyle=3 " tree view in netrw
 let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript'] " syntax highlighting in markdown
-nnoremap <leader>v :e $MYVIMRC<CR>
+set clipboard=unnamedplus " copy to the system clipboard
 
 
-" Appearance
-colorscheme dracula
 
 " junegun/fzf.vim
 nnoremap <leader><space> :GFiles<CR>
@@ -92,10 +117,6 @@ if has('nvim')
   au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
 endif
 
-" sbdchd/neoformat
-nnoremap <leader>p :Neoformat prettier<CR>
-
-
 " neovim/nvim-lspconfig
 lua require'lspconfig'.tsserver.setup{}
 
@@ -106,163 +127,83 @@ nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 
+lua << EOF
+  -- Options (see available options below)
+  vim.g.rose_pine_variant = 'moon'
 
-
-
-
-"augroup SyntaxSettings
-"    autocmd!
-"    autocmd BufNewFile,BufRead *.tsx set filetype=typescript
-"augroup END
-
-
-
-""
-"" Features
-""
-"" These options and commands enable some very useful features in Vim, that
-"" no user should have to live without.
-
-"" Set 'nocompatible' to ward off unexpected things that your distro might
-"" have made, as well as sanely reset options when re-sourcing .vimrc
-"set nocompatible
+  -- Load colorscheme after options
+  vim.cmd('colorscheme rose-pine')
+EOF
 
 "" automatically update on file changes
-"set autoread
+set autoread
 
 "" Attempt to determine the type of a file based on its name and possibly its
 "" contents. Use this to allow intelligent auto-indenting for each filetype,
 "" and for plugins that are filetype specific.
-"filetype indent plugin on
-
-"" Enable syntax highlighting
-"syntax on
-"color morning
-
-
-""------------------------------------------------------------
-"" Using hidden to allow for easier file switching by suspending buffers
-"set hidden
-
-"" Better command-line completion
-"set wildmenu
-
-"" Show partial commands in the last line of the screen
-"set showcmd
-
-"" Highlight searches
-"set hlsearch
+filetype indent plugin on
 
 "" Map escape to turn off search highlighting
-"nnoremap <esc> :noh<return><esc>
+nnoremap <esc> :noh<return><esc>
 "" needed so that vim still understands escape sequences
-"nnoremap <esc>^[ <esc>^[]
+nnoremap <esc>^[ <esc>^[]
 
 "" Disable model lines to prevent possible security problems
-"set nomodeline
+set nomodeline
 
 
 "" --- Basic Usability Options ---
 
-"" Use case insensitive search, except when using capital letters
-"set ignorecase
-"set smartcase
 
 "" be rid of swp files
-"set noswapfile
+set noswapfile
 
 "" Allow backspacing over autoindent, line breaks and start of insert action
-"set backspace=indent,eol,start
+set backspace=indent,eol,start
 
 "" When opening a new line and no filetype-specific indenting is enabled, keep
 "" the same indent as the line you're currently on. Useful for READMEs, etc.
-"set autoindent
+set autoindent
 
 "" Stop certain movements from always going to the first character of a line.
 "" While this behaviour deviates from that of Vi, it does what most users
 "" coming from other editors would expect.
-"set nostartofline
-
-"" Display the cursor position on the last line of the screen or in the status
-"" line of a window
-"set ruler
-
-"" Always display the status line, even if only one window is displayed
-"set laststatus=2
+set nostartofline
 
 "" Instead of failing a command because of unsaved changes, instead raise a
 "" dialogue asking if you wish to save changed files.
-"set confirm
-
-"" Use visual bell instead of beeping when doing something wrong
-"set novisualbell
-
-"" And reset the terminal code for the visual bell. If visualbell is set, and
-"" this line is also included, vim will neither flash nor beep. If visualbell
-"" is unset, this does nothing.
-"set t_vb=
-
-"" Set the command window height to 2 lines
-"set cmdheight=2
-
-"" Display line numbers on the left
-"set number
+set confirm
 
 "" Quickly time out on keycodes, but never time out on mappings
 "set notimeout ttimeout ttimeoutlen=200
 
-"" Use <F11> to toggle between 'paste' and 'nopaste'
-"" This can be used to prevent auto indentation from causing headaches
-"set pastetoggle=<F11>
-
-"" Force the cursor onto a new line after 80 characters
-"set textwidth=80
-"" However, in Git commit messages, let’s make it 72 characters
-"autocmd FileType gitcommit set textwidth=72
 " " Colour the 81st (or 73rd) column so that we don’t type over our limit
-"set colorcolumn=+1
-"highlight ColorColumn ctermbg=23
+set colorcolumn=+1
+highlight ColorColumn ctermbg=23
 " " In Git commit messages, also colour the 51st column (for titles)
-"autocmd FileType gitcommit set colorcolumn+=51
+autocmd FileType gitcommit set colorcolumn+=51
 
-""------------------------------------------------------------
-"" Indentation settings for using 4 spaces instead of tabs.
-"" Do not change 'tabstop' from its default value of 8 with this setup.
-"set tabstop=8
-"set shiftwidth=2
-"set softtabstop=2
-"set shiftround
-"set expandtab
 
 ""------------------------------------------------------------
 "" Useful mappings
 
 "" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
 "" which is the default
-"map Y y$
+map Y y$
 
-"" map jk to change mode
-"inoremap jk <ESC>
-
-"" Smart way to move between windows
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
 
 "" short cuts for working with tabs and splits
-"map <leader>tn :tabnew<cr>
-"map <leader>to :tabonly<cr>
-"map <leader>tc :tabclose<cr>
-"map <leader>tm :tabmove
-"map <leader>t<leader> :tabnext
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 "" close all other splits
-"map <leader>o :only<cr>
+map <leader>o :only<cr>
 
-"" search for things with ack
-"nnoremap <leader>a :Ack<space>
 
 ""------------------------------------------------------------
 "" appearance
@@ -270,9 +211,6 @@ nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
 "" Keep the cursor seven characters from top or bottom of screen
 set so=7
 
-"" show invisible characters
-set list
-set listchars=tab:▸\ ,eol:¬
 
 ""------------------------------------------------------------
 "" plugin related settings
@@ -284,54 +222,78 @@ map <C-n> :NERDTreeToggle<CR>
 map <leader>tt :NERDTreeFind<CR>
 
 
-"" ----- ctrlp.vim  ------
-"let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_working_path_mode = 'ra'
-"set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
-"nnoremap <leader>. :CtrlPTag<cr>             " Leader . to open cp-tags
-
 "" ---- fugitive -----
-":set diffopt+=vertical
 nnoremap <leader>gg :G <CR>
 
-
 "" map leader key then s to open the location list
-":nnoremap <leader>s :lopen<CR>
-":nnoremap <leader>S :lclose<CR>
-
-"" ---- ALE ----
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_delay = 1000
-
-
-"" ---- syntax highlight js / jsx -----
-"" vim-jsx
-"let g:jsx_ext_required = 0
-
+: :nnoremap <leader>s :lopen<CR>
+" :nnoremap <leader>S :lclose<CR>
 
 " quickly toggle to the last open file
 :nnoremap ,, <C-^><CR>
 
-"" " Handle resizing of panes when there are several open
-"" set winwidth=84
-"" " We have to have a winheight bigger than we want to set winminheight. But if
-"" " we set winheight to be huge before winminheight, the winminheight set will
-"" " fail.
-"" set winheight=5
-"" set winminheight=5
-"" set winheight=999
 
-"  autocmd BufReadPost *
-"    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"    \   exe "normal g`\"" |
-"    \ endif
+" remap S to overwrite the word with what's in the register
+nnoremap S "_diwP
 
-
-"let g:NERDTreeWinPos = "right"
+" HARPOON SHORTCUTS
+nnoremap <leader>j <Cmd>lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <leader>k <Cmd>lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <leader>l <Cmd>lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <leader>; <Cmd>lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <leader>af <Cmd>lua require("harpoon.mark").add_file()<CR>
+nnoremap <leader>sf <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 
 
-"map <Leader> <Plug>(easymotion-prefix)
+" Setup Completion
+" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
+lua <<EOF
+local cmp = require'cmp'
+cmp.setup({
+  -- Enable LSP snippets
+  snippet = {
+    expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    -- ['<C-p>'] = cmp.mapping.select_prev_item(),
+    -- ['<C-n>'] = cmp.mapping.select_next_item(),
+    -- Add tab support
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    -- ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
+      select = true,
+    })
+  },
 
+  -- Installed sources
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' },
+    { name = 'path' },
+    { name = 'buffer' },
+  },
+})
+EOF
+
+
+autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+"
+" Set updatetime for CursorHold
+" 300ms of no cursor movement to trigger CursorHold
+set updatetime=300
+" Show diagnostic popup on cursor hold
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+
+" I added some changes from https://sharksforarms.dev/posts/neovim-rust/
