@@ -1,90 +1,4 @@
-" Specify a directory for plugins
-"" - For Neovim: ~/.local/share/nvim/plugged
-"" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-
-""" Plug Install Plugins
-" Collection of common configurations for the Nvim LSP client
-Plug 'neovim/nvim-lspconfig'
-
-" Completion framework
-Plug 'hrsh7th/nvim-cmp'
-
-" LSP completion source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'
-
-" Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'
-
-" Other usefull completion sources
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-
-
-Plug 'pangloss/vim-javascript'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'dracula/vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'szw/vim-maximizer'
-Plug 'kassio/neoterm'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-" is this doing anything?
-Plug 'nvim-lua/completion-nvim'
-
-Plug 'prettier/vim-prettier'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'git@github.com:rose-pine/neovim.git'
-Plug 'nvim-lua/plenary.nvim' 
-Plug 'ThePrimeagen/harpoon'
-
-call plug#end()
-
-autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()
-
-" Set completeopt to have a better completion experience
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
-
-set mouse=a " if I accidentally use the mouse
-set splitright " splits to the right
-set splitbelow " splits below
-set expandtab " space characters instead of tab
-set tabstop=2 " tab equals 2 spaces
-set shiftwidth=2 " indentation
-set number " show absolute line numbers
-set relativenumber " also show relative numbers
-set ignorecase " search case insensitive
-set smartcase " search via smartcase
-set incsearch " search incremental
-set diffopt+=vertical " starts diff mode in vertical split
-set hidden " allow hidden buffers
-set nobackup " don't create backup files
-set nowritebackup " don't create backup files
-set cmdheight=1 " only one line for commands
-set shortmess+=c " don't need to press enter so often
-set signcolumn=yes " add a column for sings (e.g. LSP, ...)
-set updatetime=520 " time until update
-set undofile " persists undo tree
-filetype plugin indent on " enable detection, plugins and indents
-let mapleader = " " " space as leader key
-" if (has("termguicolors"))
-"   set termguicolors " better colors, but makes it sery slow!
-" endif
-let g:netrw_banner=0 " disable banner in netrw
-let g:netrw_liststyle=3 " tree view in netrw
-let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript'] " syntax highlighting in markdown
-set clipboard=unnamedplus " copy to the system clipboard
-
-
-
+vim.cmd([[
 " junegun/fzf.vim
 nnoremap <leader><space> :GFiles<CR>
 nnoremap <leader>FF :Files<CR>
@@ -116,18 +30,6 @@ vnoremap <leader>x :TREPLSendSelection<CR>
 if has('nvim')
   au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
 endif
-
-" neovim/nvim-lspconfig
-lua require'lspconfig'.tsserver.setup{}
-
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gH    <cmd>:Telescope lsp_code_actions<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 
 lua << EOF
   -- Options (see available options below)
@@ -297,3 +199,4 @@ nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " I added some changes from https://sharksforarms.dev/posts/neovim-rust/
+]])
