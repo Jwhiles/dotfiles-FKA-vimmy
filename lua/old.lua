@@ -1,10 +1,5 @@
 vim.cmd([[
 " junegun/fzf.vim
-nnoremap <leader><space> :GFiles<CR>
-nnoremap <leader>FF :Files<CR>
-nnoremap <leader>cc :History:<CR>
-nnoremap <leader>ff :Rg<CR>
-nnoremap <leader>fb :Buffers<CR>
 inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
     \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
     \ fzf#wrap({'dir': expand('%:p:h')}))
@@ -12,9 +7,6 @@ if has('nvim')
   au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au! FileType fzf tunmap <buffer> <Esc>
 endif
-
-" szw/vim-maximizer
-nnoremap <leader>m :MaximizerToggle!<CR>
 
 " kassio/neoterm
 let g:neoterm_default_mod = 'vertical'
@@ -47,17 +39,12 @@ set autoread
 "" and for plugins that are filetype specific.
 filetype indent plugin on
 
-"" Map escape to turn off search highlighting
-nnoremap <esc> :noh<return><esc>
-"" needed so that vim still understands escape sequences
-nnoremap <esc>^[ <esc>^[]
 
 "" Disable model lines to prevent possible security problems
 set nomodeline
 
 
 "" --- Basic Usability Options ---
-
 
 "" be rid of swp files
 set noswapfile
@@ -192,11 +179,15 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 " 300ms of no cursor movement to trigger CursorHold
 set updatetime=300
 " Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold * lua vim.diagnostic.open_float()
 
 " Goto previous/next diagnostic warning/error
 nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 " I added some changes from https://sharksforarms.dev/posts/neovim-rust/
+
+set spell spelllang=en_us
+
+
 ]])

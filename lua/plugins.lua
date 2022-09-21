@@ -32,6 +32,7 @@ Plug 'tpope/vim-surround'
 Plug 'git@github.com:rose-pine/neovim.git'
 Plug 'nvim-lua/plenary.nvim' 
 Plug 'ThePrimeagen/harpoon'
+Plug 'git@github.com:tpope/vim-fugitive.git'
 
 vim.call('plug#end')
 

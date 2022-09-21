@@ -56,3 +56,4 @@ endif
 
 require('old')
 require('lsp')
+require('keymaps')
