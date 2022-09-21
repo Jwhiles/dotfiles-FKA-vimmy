@@ -1,38 +1,36 @@
-local Plug = vim.fn['plug#']
+vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function(use)
+    use('wbthomason/packer.nvim')
+    -- Collection of common configurations for the Nvim LSP client
+    use('neovim/nvim-lspconfig')
+    -- Completion framework
+    use('hrsh7th/cmp-nvim-lsp')
+    -- Snippet completion source for nvim-cmp
+    use('hrsh7th/cmp-vsnip')
+    -- Other usefull completion sources
+    use('hrsh7th/cmp-path')
+    use('hrsh7th/cmp-buffer')
+    use('hrsh7th/nvim-cmp')
+    -- LSP completion source for nvim-cmp
+    use('pangloss/vim-javascript')
+    use('vim-airline/vim-airline')
+    use('tpope/vim-commentary')
+    use('dracula/vim')
+    use('christoomey/vim-tmux-navigator')
+    use('szw/vim-maximizer')
+    use('kassio/neoterm')
+    use({'junegunn/fzf',  dir = '~/.fzf', ['do'] = './install --all' })
+    use('junegunn/fzf.vim')
+    use('airblade/vim-gitgutter')
+    -- is this doing anything?
+    use('nvim-lua/completion-nvim')
+    use('prettier/vim-prettier')
+    use('scrooloose/nerdtree')
+    use('tpope/vim-surround')
+    use('rose-pine/neovim')
+    use('nvim-lua/plenary.nvim' )
+    use('ThePrimeagen/harpoon')
+    use('tpope/vim-fugitive')
+  end)
 
-vim.call('plug#begin', '~/.vim/plugged')
-
--- Plug Install Plugins
--- Collection of common configurations for the Nvim LSP client
-Plug 'neovim/nvim-lspconfig'
--- Completion framework
-Plug 'hrsh7th/nvim-cmp'
--- LSP completion source for nvim-cmp
-Plug 'hrsh7th/cmp-nvim-lsp'
--- Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'
--- Other usefull completion sources
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'pangloss/vim-javascript'
-Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'dracula/vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'szw/vim-maximizer'
-Plug 'kassio/neoterm'
-Plug('junegunn/fzf', { dir = '~/.fzf', ['do'] = './install --all' })
-Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
--- is this doing anything?
-Plug 'nvim-lua/completion-nvim'
-Plug 'prettier/vim-prettier'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'git@github.com:rose-pine/neovim.git'
-Plug 'nvim-lua/plenary.nvim' 
-Plug 'ThePrimeagen/harpoon'
-Plug 'git@github.com:tpope/vim-fugitive.git'
-
-vim.call('plug#end')
 

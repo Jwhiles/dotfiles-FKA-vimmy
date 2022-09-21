@@ -55,5 +55,5 @@ endif
 ]])
 
 require('old')
-require('lsp')
+-- require('lsp')
 require('keymaps')
