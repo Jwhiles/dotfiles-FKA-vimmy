@@ -2,5 +2,11 @@
 
 pushd $HOME/.dotfiles
 
+echo "stowing nvim"
 stow nvim
+echo "stowing tmux"
 stow tmux
+
+pushd ./personal_dots
+  ./stow
+popd

@@ -1,0 +1,3 @@
+[submodule "personal_dots"]
+	path = personal_dots
+	url = git@github.com:Jwhiles/personal_dots.git
