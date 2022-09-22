@@ -1,16 +1,10 @@
-# VIMRC AND THEM PLUGINS
+# DOTFILES
 
-install  vim plug https://github.com/junegunn/vim-plug
+It's the dotfiles. Intended to be managed with stow, which nicely makes symlinks for me.
 
-to install
+## How to run?
+* Clone the repo
+* Run `./install`
 
-```
-cd ~
-git clone git@github.com:Jwhiles/vimmy.git .vim && cd ~/.vim
-chmod +x setup.sh && ./setup.sh
-```
-
-## To-Do
-split .vimrc into seperate files
 
 
