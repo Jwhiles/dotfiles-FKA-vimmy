@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+pushd $HOME/.dotfiles
+
+stow nvim
+stow tmux
