@@ -6,6 +6,8 @@ echo "stowing nvim"
 stow nvim
 echo "stowing tmux"
 stow tmux
+echo "stowing zsh"
+stow zsh
 
 pushd ./personal_dots
   ./stow
