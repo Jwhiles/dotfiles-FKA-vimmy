@@ -1,0 +1,13 @@
+# /Users/johnwhiles/.config/tmuxinator/ansible.yml
+
+name: ansible
+root: ~/ansible
+
+
+windows:
+  - editor:
+      layout: main-vertical
+      synchronize: after
+      panes:
+        - nvim
+        - echo "welcome to the ansible"

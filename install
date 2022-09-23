@@ -8,6 +8,8 @@ echo "stowing tmux"
 stow tmux
 echo "stowing zsh"
 stow zsh
+echo "stowing ssh"
+stow ssh
 
 pushd ./personal_dots
   ./stow
