@@ -1,0 +1,8 @@
+# /Users/johnwhiles/.config/tmuxinator/music.yml
+
+name: music
+root: ~/
+
+windows:
+  - spotify: spt
+  - daemon: spotifyd --no-daemon
