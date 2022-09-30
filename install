@@ -10,6 +10,8 @@ echo "stowing zsh"
 stow zsh
 echo "stowing ssh"
 stow ssh
+echo "stowing bin"
+stow bin
 
 pushd ./personal_dots
   ./stow
