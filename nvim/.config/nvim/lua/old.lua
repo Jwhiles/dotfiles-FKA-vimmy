@@ -138,8 +138,8 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 " autocmd CursorHold * lua vim.diagnostic.open_float()
 
 " Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
+nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
 
 " I added some changes from https://sharksforarms.dev/posts/neovim-rust/
 
