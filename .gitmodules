@@ -1,3 +1,6 @@
 [submodule "personal_dots"]
 	path = personal_dots
 	url = git@github.com:Jwhiles/personal_dots.git
+[submodule "rose-pine-alacritty"]
+	path = rose-pine-alacritty
+	url = git@github.com:rose-pine/alacritty.git

@@ -12,6 +12,8 @@ echo "stowing ssh"
 stow ssh
 echo "stowing bin"
 stow bin
+echo "stowing alacritty"
+stow alacritty
 
 pushd ./personal_dots
   ./stow
