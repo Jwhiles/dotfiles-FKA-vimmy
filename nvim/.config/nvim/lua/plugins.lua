@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     use('nvim-lua/plenary.nvim' )
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
+    use('goolord/alpha-nvim')
   end)
 
 
