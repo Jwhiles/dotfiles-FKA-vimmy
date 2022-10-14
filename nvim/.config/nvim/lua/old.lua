@@ -96,13 +96,6 @@ set so=7
 
 ""------------------------------------------------------------
 "" plugin related settings
-""
-"" ----- NERDTree ------
-"" map a shortcut to NERDTree
-map <C-n> :NERDTreeToggle<CR>
-"" open nerd tree at current file
-map <leader>tt :NERDTreeFind<CR>
-
 
 "" ---- fugitive -----
 nnoremap <leader>gg :G <CR>

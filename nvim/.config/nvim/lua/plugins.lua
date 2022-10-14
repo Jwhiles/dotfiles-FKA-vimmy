@@ -25,13 +25,19 @@ return require('packer').startup(function(use)
     -- is this doing anything?
     use('nvim-lua/completion-nvim')
     use('prettier/vim-prettier')
-    use('scrooloose/nerdtree')
     use('tpope/vim-surround')
     use('rose-pine/neovim')
     use('nvim-lua/plenary.nvim' )
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
     use('goolord/alpha-nvim')
+    use {
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional, for file icons
+      },
+      tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
   end)
 
 
