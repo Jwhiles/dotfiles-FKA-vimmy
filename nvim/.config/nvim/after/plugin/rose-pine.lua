@@ -1,5 +1,3 @@
-
-
 -- Options (see available options below)
 vim.g.rose_pine_variant = 'moon'
 
