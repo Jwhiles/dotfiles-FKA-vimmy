@@ -23,3 +23,9 @@ nnoremap("<leader>m", ":MaximizerToggle!<CR>")
 nnoremap("<esc>", ":noh<return><esc>")
 --needed so that vim still understands escape sequences
 nnoremap("<esc>^[", "<esc>^[]")
+
+nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>")
+nnoremap("<leader>f", function()
+    vim.lsp.buf.format()
+end)
+
