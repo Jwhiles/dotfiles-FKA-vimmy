@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 bindkey -s ^f "tm-sesh\n"
+bindkey -s ^x "session-kilL\n"
 alias spot="tmuxinator start music"
 
 eval "$(starship init zsh)"
