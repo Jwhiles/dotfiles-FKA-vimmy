@@ -4,5 +4,4 @@ name: music
 root: ~/
 
 windows:
-  - spotify: spt
-  - daemon: spotifyd --no-daemon
+  - spotify: ncspot

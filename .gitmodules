@@ -4,3 +4,6 @@
 [submodule "rose-pine-alacritty"]
 	path = rose-pine-alacritty
 	url = git@github.com:rose-pine/alacritty.git
+[submodule "rose-pine-kitty"]
+	path = rose-pine-kitty
+	url = git@github.com:rose-pine/kitty.git

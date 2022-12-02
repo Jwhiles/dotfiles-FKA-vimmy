@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
     use('goolord/alpha-nvim')
+    use('github/copilot.vim')
     use {
       'nvim-tree/nvim-tree.lua',
       requires = {
@@ -38,6 +39,10 @@ return require('packer').startup(function(use)
       },
       tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
+
+    -- the testing zone
+    use("nvim-telescope/telescope.nvim")
+    use("ThePrimeagen/git-worktree.nvim")
   end)
 
 

@@ -134,7 +134,5 @@ autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
 nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
 
-" I added some changes from https://sharksforarms.dev/posts/neovim-rust/
-
 set spell spelllang=en_us
 ]])

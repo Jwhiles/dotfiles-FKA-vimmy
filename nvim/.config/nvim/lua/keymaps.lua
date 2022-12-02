@@ -29,3 +29,15 @@ nnoremap("<leader>f", function()
     vim.lsp.buf.format()
 end)
 
+
+
+nnoremap("<C-p>", ":Telescope")
+
+
+nnoremap("<leader>gw", function()
+    require('telescope').extensions.git_worktree.git_worktrees()
+end)
+nnoremap("<leader>gm", function()
+    require('telescope').extensions.git_worktree.create_git_worktree()
+end)
+
