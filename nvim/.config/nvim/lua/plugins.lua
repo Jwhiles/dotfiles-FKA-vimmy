@@ -43,6 +43,7 @@ return require('packer').startup(function(use)
     -- the testing zone
     use("nvim-telescope/telescope.nvim")
     use("ThePrimeagen/git-worktree.nvim")
+    use("simrat39/rust-tools.nvim")
   end)
 
 
