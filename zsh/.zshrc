@@ -41,4 +41,4 @@ eval "$(zoxide init zsh)"
 alias cd='z'
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
+export PYTORCH_ENABLE_MPS_FALLBACK=1
