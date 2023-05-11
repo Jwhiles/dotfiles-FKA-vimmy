@@ -14,6 +14,8 @@ echo "stowing bin"
 stow bin
 echo "stowing alacritty"
 stow alacritty
+echo "stowing dig"
+stow dig
 
 pushd ./personal_dots
   ./stow
