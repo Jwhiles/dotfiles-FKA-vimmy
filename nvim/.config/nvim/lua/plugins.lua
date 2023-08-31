@@ -1,5 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
+    --  plugin manager
     use('wbthomason/packer.nvim')
     -- Collection of common configurations for the Nvim LSP client
     use('neovim/nvim-lspconfig')
@@ -13,9 +14,7 @@ return require('packer').startup(function(use)
     use('hrsh7th/nvim-cmp')
     -- LSP completion source for nvim-cmp
     use('pangloss/vim-javascript')
-    use('vim-airline/vim-airline')
     use('tpope/vim-commentary')
-    use('dracula/vim')
     use('christoomey/vim-tmux-navigator')
     use('szw/vim-maximizer')
     use('kassio/neoterm')
@@ -42,13 +41,8 @@ return require('packer').startup(function(use)
 
     -- the testing zone
     use("nvim-telescope/telescope.nvim")
-    use("ThePrimeagen/git-worktree.nvim")
     use("simrat39/rust-tools.nvim")
     use {'nvim-treesitter/nvim-treesitter'}
-    use {'nvim-orgmode/orgmode', config = function()
-      require('orgmode').setup{}
-    end
-    }
   end)
 
 

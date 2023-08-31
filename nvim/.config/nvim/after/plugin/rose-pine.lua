@@ -1,5 +1,11 @@
 -- Options (see available options below)
-vim.g.rose_pine_variant = 'moon'
+require('rose-pine').setup({
+	--- @usage 'auto'|'main'|'moon'|'dawn'
+	variant = 'dawn',
+	--- @usage 'main'|'moon'|'dawn'
+	dark_variant = 'main',
+})
+
 
 -- Load colorscheme after options
 vim.cmd('colorscheme rose-pine')
