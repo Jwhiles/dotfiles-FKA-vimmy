@@ -16,6 +16,8 @@ echo "stowing alacritty"
 stow alacritty
 echo "stowing dig"
 stow dig
+echo "stowing aws"
+stow aws
 
 pushd ./personal_dots
   ./stow
