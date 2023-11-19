@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/nvim-cmp')
-    -- LSP completion source for nvim-cmp
     use('pangloss/vim-javascript')
     use('tpope/vim-commentary')
     use('christoomey/vim-tmux-navigator')
@@ -30,7 +29,7 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
     use('goolord/alpha-nvim')
-    -- use('github/copilot.vim')
+    use('github/copilot.vim')
     use {
       'nvim-tree/nvim-tree.lua',
       requires = {
