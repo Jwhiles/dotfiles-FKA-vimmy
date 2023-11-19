@@ -26,6 +26,7 @@ fi
 bindkey -s ^f "tm-sesh\n"
 bindkey -s ^x "session-kilL\n"
 alias spot="tmuxinator start music"
+alias john="tmuxinator start johncom"
 
 eval "$(starship init zsh)"
 
