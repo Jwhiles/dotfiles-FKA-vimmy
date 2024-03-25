@@ -122,7 +122,7 @@ nnoremap <leader>sf <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 
 
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
+" autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
 "
 " Set updatetime for CursorHold
 " 300ms of no cursor movement to trigger CursorHold

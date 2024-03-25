@@ -5,6 +5,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-fzf-history-search
+    asdf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -27,6 +28,7 @@ bindkey -s ^f "tm-sesh\n"
 bindkey -s ^x "session-kilL\n"
 alias spot="tmuxinator start music"
 alias john="tmuxinator start johncom"
+alias coach="tmuxinator start coach"
 
 eval "$(starship init zsh)"
 
@@ -36,7 +38,7 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.secrets ] && source ~/.secrets
 
-alias ls='exa --git --icons --color=always --group-directories-first'
+alias ls='eza --git --icons --color=always --group-directories-first'
 
 eval "$(zoxide init zsh)"
 alias cd='z'
@@ -45,3 +47,6 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PYTORCH_ENABLE_MPS_FALLBACK=1
 
 alias foxdie='docker kill $(docker ps -q)'
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
