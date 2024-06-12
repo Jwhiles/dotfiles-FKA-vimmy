@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
     use('goolord/alpha-nvim')
+    -- Highlights a unique char in each word - for easy jumpin
+    use("unblevable/quick-scope")
     use('github/copilot.vim')
     use {
       'nvim-tree/nvim-tree.lua',
