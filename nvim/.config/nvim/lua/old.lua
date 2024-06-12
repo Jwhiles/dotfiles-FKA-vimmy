@@ -105,7 +105,7 @@ nnoremap <leader>gg :G <CR>
 " :nnoremap <leader>S :lclose<CR>
 
 " quickly toggle to the last open file
-:nnoremap ,, <C-^><CR>
+:nnoremap \\ <C-^><CR>
 
 
 " remap S to overwrite the word with what's in the register
