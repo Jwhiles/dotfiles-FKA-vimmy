@@ -1,0 +1,11 @@
+# /Users/johnwhiles/.config/tmuxinator/johncom.yml
+
+name: coach
+root: ~/personal/coach
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+          - nvim
+          - npm run dev
