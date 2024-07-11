@@ -5,8 +5,28 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
--- leader p to paste without emptying paste register!!!
+-- # General nice stuff, unrelated to plugins
+-- leader p to paste without emptying paste register, in visual mode.
 xnoremap("<leader>p", "\"_dP")
+
+-- Go to prev/next diagnostic
+nnoremap('g[', vim.diagnostic.goto_prev)
+nnoremap('g[', vim.diagnostic.goto_next)
+
+-- short cuts for working with tabs and splits
+nnoremap('<leader>tn', ':tabnew<cr>')
+nnoremap('<leader>to', ':tabonly<cr>')
+nnoremap('<leader>tc', ':tabclose<cr>')
+nnoremap('<leader>tm', ':tabmove')
+nnoremap('<leader>t<leader>', ':tabnext')
+
+-- close all other splits
+nnoremap('<leader>o', ':only<cr>')
+
+-- Map escape to turn off search highlighting
+nnoremap("<esc>", ":noh<return><esc>")
+--needed so that vim still understands escape sequences
+nnoremap("<esc>^[", "<esc>^[]")
 
 -- junegun/fzf.vim
 nnoremap("<leader><space>", ":GFiles<CR>")
@@ -18,11 +38,6 @@ nnoremap("<leader>fb", ":Buffers<CR>")
 -- szw/vim-maximizer
 nnoremap("<leader>m", ":MaximizerToggle!<CR>")
 
-
--- Map escape to turn off search highlighting
-nnoremap("<esc>", ":noh<return><esc>")
---needed so that vim still understands escape sequences
-nnoremap("<esc>^[", "<esc>^[]")
 
 nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>")
 nnoremap("<leader>f", vim.lsp.buf.format)
@@ -58,3 +73,5 @@ vim.keymap.set('n', '<leader>;', function()
 end)
 vim.keymap.set('n', '<leader>af', harpoonMark.add_file)
 vim.keymap.set('n', '<leader>sf', harpoonUi.toggle_quick_menu)
+
+

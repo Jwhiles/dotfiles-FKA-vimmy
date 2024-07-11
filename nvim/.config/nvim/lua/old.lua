@@ -1,8 +1,4 @@
 vim.cmd([[
-" junegun/fzf.vim
-inoremap <expr> <c-x><c-f> fzf#vim#complete#path(
-    \ "find . -path '*/\.*' -prune -o -print \| sed '1d;s:^..::'",
-    \ fzf#wrap({'dir': expand('%:p:h')}))
 if has('nvim')
   au! TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   au! FileType fzf tunmap <buffer> <Esc>
@@ -76,15 +72,6 @@ autocmd FileType gitcommit set colorcolumn+=51
 map Y y$
 
 
-"" short cuts for working with tabs and splits
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
-"" close all other splits
-map <leader>o :only<cr>
 
 
 ""------------------------------------------------------------
@@ -114,18 +101,7 @@ nnoremap S "_diwP
 
 
 
-
 " autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 200)
-"
-" Set updatetime for CursorHold
-" 300ms of no cursor movement to trigger CursorHold
-" set updatetime=300
-" Show diagnostic popup on cursor hold
-" autocmd CursorHold * lua vim.diagnostic.open_float()
-
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.diagnostic.goto_next()<CR>
 
 set spell spelllang=en_us
 ]])
