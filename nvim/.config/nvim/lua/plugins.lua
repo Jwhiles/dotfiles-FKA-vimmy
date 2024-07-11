@@ -16,12 +16,12 @@ return require('packer').startup(function(use)
     use('tpope/vim-commentary')
     use('christoomey/vim-tmux-navigator')
     use('szw/vim-maximizer')
-    use('kassio/neoterm')
+    -- use('kassio/neoterm')
     use({'junegunn/fzf',  dir = '~/.fzf', ['do'] = './install --all' })
     use('junegunn/fzf.vim')
     use('airblade/vim-gitgutter')
     -- is this doing anything?
-    use('nvim-lua/completion-nvim')
+--     use('nvim-lua/completion-nvim')
     use('prettier/vim-prettier')
     use('tpope/vim-surround')
     use('rose-pine/neovim')
@@ -38,8 +38,9 @@ return require('packer').startup(function(use)
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
       }
     }
-
-    -- the testing zone
+-- 
+--     -- the testing zone
+    use("mbbill/undotree")
     use("nvim-telescope/telescope.nvim")
     -- use("simrat39/rust-tools.nvim")
     use {'nvim-treesitter/nvim-treesitter'}
@@ -56,5 +57,4 @@ return require('packer').startup(function(use)
           end
         }
   end)
-
 

@@ -111,13 +111,6 @@ nnoremap <leader>gg :G <CR>
 " remap S to overwrite the word with what's in the register
 nnoremap S "_diwP
 
-" HARPOON SHORTCUTS
-nnoremap <leader>j <Cmd>lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <leader>k <Cmd>lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <leader>l <Cmd>lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <leader>; <Cmd>lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <leader>af <Cmd>lua require("harpoon.mark").add_file()<CR>
-nnoremap <leader>sf <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
 
 
 

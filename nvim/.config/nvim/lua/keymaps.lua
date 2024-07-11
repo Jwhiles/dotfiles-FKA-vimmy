@@ -25,9 +25,7 @@ nnoremap("<esc>", ":noh<return><esc>")
 nnoremap("<esc>^[", "<esc>^[]")
 
 nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>")
-nnoremap("<leader>f", function()
-    vim.lsp.buf.format()
-end)
+nnoremap("<leader>f", vim.lsp.buf.format)
 
 
 
@@ -41,3 +39,22 @@ nnoremap("<leader>gm", function()
     require('telescope').extensions.git_worktree.create_git_worktree()
 end)
 
+vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
+
+-- Harpoon
+local harpoonUi = require('harpoon.ui')
+local harpoonMark = require('harpoon.mark')
+vim.keymap.set('n', '<leader>j', function()
+    harpoonUi.nav_file(1)
+end)
+vim.keymap.set('n', '<leader>k', function()
+    harpoonUi.nav_file(2)
+end)
+vim.keymap.set('n', '<leader>l', function()
+    harpoonUi.nav_file(3)
+end)
+vim.keymap.set('n', '<leader>;', function()
+    harpoonUi.nav_file(4)
+end)
+vim.keymap.set('n', '<leader>af', harpoonMark.add_file)
+vim.keymap.set('n', '<leader>sf', harpoonUi.toggle_quick_menu)
