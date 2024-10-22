@@ -11,7 +11,7 @@ xnoremap("<leader>p", "\"_dP")
 
 -- Go to prev/next diagnostic
 nnoremap('g[', vim.diagnostic.goto_prev)
-nnoremap('g[', vim.diagnostic.goto_next)
+nnoremap('g]', vim.diagnostic.goto_next)
 
 -- short cuts for working with tabs and splits
 nnoremap('<leader>tn', ':tabnew<cr>')
