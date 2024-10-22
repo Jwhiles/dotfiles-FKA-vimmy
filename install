@@ -18,6 +18,8 @@ echo "stowing dig"
 stow dig
 echo "stowing aws"
 stow aws
+echo "stowing zed"
+stow zed --adopt
 
 pushd ./personal_dots
   ./stow
