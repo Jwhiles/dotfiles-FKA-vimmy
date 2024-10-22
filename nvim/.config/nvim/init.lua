@@ -57,3 +57,6 @@ endif
 require('old')
 -- require('lsp')
 require('keymaps')
+
+
+vim.keymap.set('n', "<leader>Q", [[:let @q = input("Edit macro:", @q)<CR>]])
