@@ -28,9 +28,22 @@
   "ui_font_family": "DaddyTimeMono Nerd Font",
   "buffer_font_family": "DaddyTimeMono Nerd Font",
   "buffer_font_size": 16,
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": ["class", "className", "ngClass", "styles"]
+      }
+    }
+  },
   "languages": {
     "TypeScript": {
-      "language_servers": ["typescript-language-server", "!vtsls", "..."]
+      "language_servers": ["typescript-language-server", "!vtsls", "..."],
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
+      }
     },
     "TSX": {
       "language_servers": ["typescript-language-server", "!vtsls", "..."]
