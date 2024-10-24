@@ -4,5 +4,60 @@
     "bindings": {
       "space o": "tab_switcher::Toggle"
     }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space b": "editor::ToggleGitBlame",
+      "shift-k": "editor::Hover",
+      "space f": "editor::Format",
+      "space d": "diagnostics::Deploy",
+      "space f f": "file_finder::Toggle",
+      "space o": "tab_switcher::Toggle",
+      "space e": "workspace::ToggleLeftDock",
+      "space /": "workspace::NewSearch",
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPrevMatch",
+      "space t": "workspace::NewCenterTerminal",
+      "g c": "editor::ToggleComments",
+      "space c": "pane::CloseActiveItem"
+    }
+  },
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext"
+    }
+  },
+  {
+    "context": "TabSwitcher",
+    "bindings": {
+      "k": "menu::SelectPrev",
+      "j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "FileFinder",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "CommandPalette",
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
   }
 ]
