@@ -48,5 +48,12 @@ export PYTORCH_ENABLE_MPS_FALLBACK=1
 
 alias foxdie='docker kill $(docker ps -q)'
 
+alias chat='llm chat -m claude-3.5-haiku'
+alias unpushed='git branch --no-merged origin/main | grep -v "*"'
+alias gfco='git fetch origin && git checkout'
+
+
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="/Users/john/.local/bin:$PATH"
+
 
