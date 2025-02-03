@@ -54,6 +54,7 @@ alias gfco='git fetch origin && git checkout'
 
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="/Users/john/.local/bin:$PATH"
+export PATH="~/john/.local/bin:$PATH"
 
 
+. "~/john/.deno/env"
