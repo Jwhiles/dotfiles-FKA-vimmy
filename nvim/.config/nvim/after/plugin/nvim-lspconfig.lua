@@ -33,14 +33,23 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['ts_ls'].setup{
+
+local nvim_lsp = require('lspconfig')
+nvim_lsp.denols.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
+}
+nvim_lsp.ts_ls.setup {
+  on_attach = on_attach,
+  root_dir = nvim_lsp.util.root_pattern("package.json"),
+  single_file_support = false
+}
+
+nvim_lsp.gopls.setup{
   on_attach = on_attach,
   flags = lsp_flags,
 }
-require('lspconfig')['gopls'].setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-}
+
 
 -- require('lspconfig')['rust_analyzer'].setup{
 --     on_attach = on_attach,

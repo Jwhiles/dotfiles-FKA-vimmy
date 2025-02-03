@@ -11,7 +11,7 @@
   "assistant": {
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -45,6 +45,8 @@
           "closureReturnTypeHints": {
             "enable": "always"
           }
+        "checkOnSave": {
+          "command": "clippy"
         }
       }
     }
@@ -55,8 +57,8 @@
       "inlay_hints": {
         "enabled": true,
         "show_parameter_hints": false,
-        "show_other_hints": true,
-        "show_type_hints": true
+        "show_other_hints": true
+        // "show_type_hints": true
       }
     },
     "TSX": {
