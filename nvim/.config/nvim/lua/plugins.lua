@@ -38,6 +38,8 @@ return require('packer').startup(function(use)
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
       }
     }
+    use("rebelot/kanagawa.nvim")
+
 -- 
 --     -- the testing zone
     use("mbbill/undotree")
