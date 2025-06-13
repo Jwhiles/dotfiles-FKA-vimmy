@@ -40,7 +40,6 @@ nnoremap("<leader>m", ":MaximizerToggle!<CR>")
 
 
 nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>")
-nnoremap("<leader>f", vim.lsp.buf.format)
 
 
 
