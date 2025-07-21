@@ -12,17 +12,14 @@ return require('packer').startup(function(use)
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/nvim-cmp')
-    use('pangloss/vim-javascript')
     use('tpope/vim-commentary')
     use('christoomey/vim-tmux-navigator')
-    use('szw/vim-maximizer')
     use({'junegunn/fzf',  dir = '~/.fzf', ['do'] = './install --all' })
     use('junegunn/fzf.vim')
     use('airblade/vim-gitgutter')
     -- is this doing anything?
     use('prettier/vim-prettier')
     use('tpope/vim-surround')
-    use('Mofiqul/dracula.nvim')
     use('nvim-lua/plenary.nvim' )
     use('ThePrimeagen/harpoon')
     use('tpope/vim-fugitive')
@@ -35,14 +32,15 @@ return require('packer').startup(function(use)
         'nvim-tree/nvim-web-devicons', -- optional, for file icons
       }
     }
-    use("rebelot/kanagawa.nvim")
-
-
-    -- the testing zone
-    use("mbbill/undotree")
-    use("nvim-telescope/telescope.nvim")
-    use {'nvim-treesitter/nvim-treesitter'}
     use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
+
+    use("rebelot/kanagawa.nvim") -- My theme
+
+    use { -- Show a nice UI with possible shortcuts
       "folke/which-key.nvim",
       config = function()
         vim.o.timeout = true
@@ -51,5 +49,9 @@ return require('packer').startup(function(use)
             }
           end
         }
+
+
+    -- the testing zone
+    use("mbbill/undotree")
   end)
 

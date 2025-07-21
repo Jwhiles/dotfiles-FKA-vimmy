@@ -46,8 +46,9 @@ vim.keymap.set('n', "<leader>Q", [[:let @q = input("Edit macro:", @q)<CR>]])
 o.autoread = true
 
 -- Disable modelines
--- o.modelines = false
+o.modeline = false
 
 o.confirm = true
-
 o.scrolloff = 5 -- keep 5 lines above/below cursor
+o.splitbelow = true
+o.splitright = true

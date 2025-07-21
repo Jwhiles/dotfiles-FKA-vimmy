@@ -14,21 +14,18 @@ vim.g.mapleader = " " -- space as leader key
 xnoremap("<leader>p", "\"_dP")
 
 -- Go to prev/next diagnostic
-nnoremap('g[', vim.diagnostic.goto_prev)
-nnoremap('g]', vim.diagnostic.goto_next)
+nnoremap('g[', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic" })
+nnoremap('g]', vim.diagnostic.goto_next, { desc = "Go to next diagnostic" })
 
 -- short cuts for working with tabs and splits
-nnoremap('<leader>tn', ':tabnew<cr>')
-nnoremap('<leader>to', ':tabonly<cr>')
-nnoremap('<leader>tc', ':tabclose<cr>')
-nnoremap('<leader>tm', ':tabmove')
-nnoremap('<leader>t<leader>', ':tabnext')
+nnoremap('<leader>tn', ':tabnew<cr>', { desc = "Open new tab" })
+nnoremap('<leader>to', ':tabonly<cr>', { desc = "Close all tabs beside active tab" })
+nnoremap('<leader>tc', ':tabclose<cr>', { desc = "Close current tab" })
 
 -- close all other splits
-nnoremap('<leader>o', ':only<cr>')
+nnoremap('<leader>o', ':only<cr>', { desc = "Close all other splits" })
 
--- Map escape to turn off search highlighting
-nnoremap("<esc>", ":noh<return><esc>")
+nnoremap("<esc>", ":noh<return><esc>", { desc = "Clear search highlighting" })
 --needed so that vim still understands escape sequences
 nnoremap("<esc>^[", "<esc>^[]")
 
@@ -39,49 +36,21 @@ nnoremap("<leader>cc", ":History:<CR>")
 nnoremap("<leader>ff", ":Rg<CR>")
 nnoremap("<leader>fb", ":Buffers<CR>")
 
--- szw/vim-maximizer
-nnoremap("<leader>m", ":MaximizerToggle!<CR>")
+
+nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>", { desc = "Open tmux session picker" })
 
 
-nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>")
+nnoremap("<C-p>", ":Telescope<CR>", { desc = "Open Telescope" })
 
 
-
-nnoremap("<C-p>", ":Telescope")
-
-
-nnoremap("<leader>gw", function()
-    require('telescope').extensions.git_worktree.git_worktrees()
-end)
-nnoremap("<leader>gm", function()
-    require('telescope').extensions.git_worktree.create_git_worktree()
-end)
 
 vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
 
--- Harpoon
-local harpoonUi = require('harpoon.ui')
-local harpoonMark = require('harpoon.mark')
-vim.keymap.set('n', '<leader>j', function()
-    harpoonUi.nav_file(1)
-end)
-vim.keymap.set('n', '<leader>k', function()
-    harpoonUi.nav_file(2)
-end)
-vim.keymap.set('n', '<leader>l', function()
-    harpoonUi.nav_file(3)
-end)
-vim.keymap.set('n', '<leader>;', function()
-    harpoonUi.nav_file(4)
-end)
-vim.keymap.set('n', '<leader>af', harpoonMark.add_file)
-vim.keymap.set('n', '<leader>sf', harpoonUi.toggle_quick_menu)
 
 -- Make Y behave like D and C
 vim.keymap.set('n', 'Y', 'y$')
 
-
-vim.keymap.set('n', '<leader>\\', '<C-^><CR>')
+vim.keymap.set('n', '\\', '<C-^><CR>')
 
 
 
