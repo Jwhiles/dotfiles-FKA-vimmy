@@ -5,6 +5,10 @@ local inoremap = Remap.inoremap
 local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
+
+-- # Leader Key
+vim.g.mapleader = " " -- space as leader key
+
 -- # General nice stuff, unrelated to plugins
 -- leader p to paste without emptying paste register, in visual mode.
 xnoremap("<leader>p", "\"_dP")
@@ -72,5 +76,12 @@ vim.keymap.set('n', '<leader>;', function()
 end)
 vim.keymap.set('n', '<leader>af', harpoonMark.add_file)
 vim.keymap.set('n', '<leader>sf', harpoonUi.toggle_quick_menu)
+
+-- Make Y behave like D and C
+vim.keymap.set('n', 'Y', 'y$')
+
+
+vim.keymap.set('n', '<leader>\\', '<C-^><CR>')
+
 
 

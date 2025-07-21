@@ -20,7 +20,6 @@ return require('packer').startup(function(use)
     use('junegunn/fzf.vim')
     use('airblade/vim-gitgutter')
     -- is this doing anything?
---     use('nvim-lua/completion-nvim')
     use('prettier/vim-prettier')
     use('tpope/vim-surround')
     use('Mofiqul/dracula.nvim')
@@ -38,21 +37,17 @@ return require('packer').startup(function(use)
     }
     use("rebelot/kanagawa.nvim")
 
--- 
---     -- the testing zone
+
+    -- the testing zone
     use("mbbill/undotree")
     use("nvim-telescope/telescope.nvim")
-    -- use("simrat39/rust-tools.nvim")
     use {'nvim-treesitter/nvim-treesitter'}
     use {
       "folke/which-key.nvim",
       config = function()
         vim.o.timeout = true
-        vim.o.timeoutlen = 300
+        vim.o.timeoutlen = 500
             require("which-key").setup {
-              -- your configuration comes here
-              -- or leave it empty to use the default settings
-              -- refer to the configuration section below
             }
           end
         }
