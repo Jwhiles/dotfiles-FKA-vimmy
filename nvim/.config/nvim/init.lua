@@ -2,15 +2,10 @@
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd([[
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-]])
-
-require('plugins')
 require('settings')
 require('keymaps')
 require('auto_commands')
+require("config.lazy")
 
 -- Disable some plug-ins that are not needed
 for _, plugin in pairs({
@@ -21,4 +16,3 @@ for _, plugin in pairs({
 }) do
     vim.g["loaded_" .. plugin] = 1
 end
-

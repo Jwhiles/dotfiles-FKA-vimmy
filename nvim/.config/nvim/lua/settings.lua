@@ -1,9 +1,9 @@
 o = vim.o
 
-o.wrap = false
-o.tabstop = 4
-o.shiftwidth = 4
-o.updatetime=100 -- time until update
+-- o.wrap = false
+o.tabstop = 2
+o.shiftwidth = 2
+o.updatetime = 100 -- time until update
 o.timeoutlen = 300
 
 -- Show absolute number on active line, relative numbers on others

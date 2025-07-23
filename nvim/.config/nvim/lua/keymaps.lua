@@ -29,28 +29,12 @@ nnoremap("<esc>", ":noh<return><esc>", { desc = "Clear search highlighting" })
 --needed so that vim still understands escape sequences
 nnoremap("<esc>^[", "<esc>^[]")
 
--- junegun/fzf.vim
-nnoremap("<leader><space>", ":GFiles<CR>")
-nnoremap("<leader>FF", ":Files<CR>")
-nnoremap("<leader>cc", ":History:<CR>")
-nnoremap("<leader>ff", ":Rg<CR>")
-nnoremap("<leader>fb", ":Buffers<CR>")
-
+-- Make Y behave like D and C
+vim.keymap.set('n', 'Y', 'y$')
 
 nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>", { desc = "Open tmux session picker" })
 
 
-nnoremap("<C-p>", ":Telescope<CR>", { desc = "Open Telescope" })
-
-
-
-vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle)
-
-
--- Make Y behave like D and C
-vim.keymap.set('n', 'Y', 'y$')
-
-vim.keymap.set('n', '\\', '<C-^><CR>')
 
 
 
