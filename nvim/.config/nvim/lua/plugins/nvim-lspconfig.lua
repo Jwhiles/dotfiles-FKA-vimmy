@@ -1,7 +1,7 @@
 -- Configure language server protocols
 -- https://github.com/neovim/nvim-lspconfig
 
-local on_attach = function(client, bufnr)
+local common_on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -18,16 +18,27 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.format, bufopts)
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, bufopts)
+  vim.keymap.set('n', '<leader>f', function() 
+    vim.lsp.buf.format { filter = function(client) return client.name ~= "ts_ls" end } 
+  end, bufopts)
+
 end
+
 
 return {
 	'neovim/nvim-lspconfig',
 	opts = {
 		servers = {
 			ts_ls = { 
-				on_attach = on_attach
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			},
+			eslint = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
 			},
 			-- rust_analyzer = {
 			-- 	settings = {
