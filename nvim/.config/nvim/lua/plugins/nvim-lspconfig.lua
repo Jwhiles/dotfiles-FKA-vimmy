@@ -22,7 +22,6 @@ local common_on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>f', function() 
     vim.lsp.buf.format { filter = function(client) return client.name ~= "ts_ls" end } 
   end, bufopts)
-
 end
 
 
@@ -36,6 +35,11 @@ return {
 				end
 			},
 			eslint = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			},
+			gopls = {
 				on_attach = function(client, bufnr) 
 					common_on_attach(client, bufnr)
 				end

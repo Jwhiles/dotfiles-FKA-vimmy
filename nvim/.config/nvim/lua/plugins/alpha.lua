@@ -1,5 +1,6 @@
 return {
 	'goolord/alpha-nvim',
+	lazy=false,
 	config = function()
 		
 			local alpha = require("alpha")
@@ -19,9 +20,9 @@ return {
 			
 			-- Set menu
 			dashboard.section.buttons.val = {
-				dashboard.button( "e", "  > New file" , ":ene <BAR> startinsert <CR>"),
-				dashboard.button( "u", "  > Update Plugins" , ":PackerSync <CR>"),
-				dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
+				dashboard.button( "e", "New file" , ":ene <BAR> startinsert <CR>"),
+				dashboard.button( "u", "Update Plugins" , ":PackerSync <CR>"),
+				dashboard.button( "q", "Quit NVIM", ":qa<CR>"),
 			}
 
 			-- Send config to alpha
