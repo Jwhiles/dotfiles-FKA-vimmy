@@ -10,10 +10,10 @@ return {
 		{ "grC",              "<cmd>FzfLua grep_cword<cr>",            desc = "Grep WORD under cursor" },
 		{ "<leader><space>",  "<cmd>FzfLua files<cr>",                 desc = "Find files" },
 		{ "<leader>fb",       "<cmd>FzfLua buffers<cr>",               desc = "Find buffers" },
+		{ "<leader>km",       "<cmd>FzfLua keymaps<cr>",               desc = "View keymaps" },
 
 		-- { "ss",  "<cmd>FzfLua spell_suggest<cr>",         desc = "Spell suggest" },
 		-- { "ft",  "<cmd>FzfLua filetypes<cr>",             desc = "Change file-types" },
-		-- { "km",  "<cmd>FzfLua keymaps<cr>",               desc = "View keymaps" },
 
 		-- { "ch",  "<cmd>FzfLua command_history<cr>",       desc = "Command history" },
 		-- { "sh",  "<cmd>FzfLua search_history<cr>",        desc = "Search history" },
@@ -29,7 +29,19 @@ return {
 		-- { "lds", "<cmd>FzfLua lsp_document_symbols<cr>",  desc = "LSP document symbols" },
 		-- { "lws", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "LSP workspace symbols" },
 		-- { "ca",  "<cmd>FzfLua lsp_code_actions<cr>",      desc = "LSP code actions" },
-	}
+	},
+
+	config = function()
+		require('fzf-lua').setup({
+			keymap = {
+				fzf = {
+					true,
+					-- Use <c-q> to select all items and add them to the quickfix list
+					["ctrl-q"] = "select-all+accept",
+				},
+			},
+		})
+	end,
 }
 -- my old keybinds
 -- vim.cmd([[

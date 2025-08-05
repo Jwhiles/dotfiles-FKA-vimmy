@@ -5,23 +5,25 @@ local common_on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  --
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setqflist, bufopts)
-  vim.keymap.set('n', '<leader>f', function() 
-    vim.lsp.buf.format { filter = function(client) return client.name ~= "ts_ls" end } 
-  end, bufopts)
+
+	local function map(key, func, desc)
+		vim.keymap.set('n', key, func, vim.tbl_extend('force', bufopts, {desc = desc}))
+	end
+
+	map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+	map('gd', vim.lsp.buf.definition, 'Go to definition')
+	map('K', vim.lsp.buf.hover, 'Show hover information')
+	map('gi', vim.lsp.buf.implementation, 'Go to implementation')
+	map('<C-k>', vim.lsp.buf.signature_help, 'Show signature help')
+	map('<space>D', vim.lsp.buf.type_definition, 'Go to type definition')
+	map('<space>rn', vim.lsp.buf.rename, 'Rename symbol')
+	map('<space>ca', vim.lsp.buf.code_action, 'Code actions')
+	map('gr', vim.lsp.buf.references, 'Show references')
+  map('<leader>q', vim.diagnostic.setqflist, "Populate quick fix list with diagnostics")
+  map('<leader>f', function() 
+  	vim.lsp.buf.format { filter = function(client) return client.name ~= "ts_ls" end } 
+  end, "Format buffer") 
 end
 
 
