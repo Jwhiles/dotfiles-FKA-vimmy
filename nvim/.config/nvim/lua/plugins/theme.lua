@@ -1,14 +1,20 @@
-return  {
-	'rebelot/kanagawa.nvim',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme kanagawa-wave]])
-    end,
+return {
+  "cpplain/flexoki.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
 	keys = {
-		{  '<leader>lm', function() return vim.cmd("colorscheme kanagawa-lotus") end, { desc = 'Switch to Light Mode theme' } },
-		{  '<leader>dm', function() return vim.cmd("colorscheme kanagawa-wave") end, { desc = 'Switch to Dark Mode theme' } } 
+		{  '<leader>lm', function() vim.o.background = 'light' end, { desc = 'Switch to Light Mode theme' } },
+		{  '<leader>dm', function() vim.o.background = 'dark'  end, { desc = 'Switch to Dark Mode theme' } } 
 	},
-}
+	config = function()
+		vim.cmd([[colorscheme flexoki]])
 
+		require("flexoki").setup({
+			plugins = {
+				"nvim_treesitter_context",
+				"which_key",
+			}
+		})
+	end,
+}
