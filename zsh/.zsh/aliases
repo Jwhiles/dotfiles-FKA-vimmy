@@ -1,0 +1,7 @@
+alias foxdie='docker kill $(docker ps -q)'
+alias unpushed='git branch --no-merged origin/main | grep -v "*"'
+alias gfco='git fetch origin && git checkout'
+alias john="tmuxinator start johncom"
+alias coach="tmuxinator start coach"
+alias ls='eza --git --icons --color=always --group-directories-first'
+alias cd='z'

@@ -1,0 +1,2 @@
+bindkey -s ^f "tm-sesh\n"
+bindkey -s ^x "session-kilL\n"

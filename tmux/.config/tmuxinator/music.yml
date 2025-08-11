@@ -1,7 +1,0 @@
-# /Users/johnwhiles/.config/tmuxinator/music.yml
-
-name: music
-root: ~/
-
-windows:
-  - spotify: ncspot
