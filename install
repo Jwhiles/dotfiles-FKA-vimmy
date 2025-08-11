@@ -19,6 +19,3 @@ stow dig
 echo "stowing aws"
 stow aws
 
-pushd ./personal_dots
-  ./stow
-popd
