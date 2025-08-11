@@ -11,19 +11,16 @@ return {
 		{ "<leader><space>",  "<cmd>FzfLua files<cr>",                 desc = "Find files" },
 		{ "<leader>fb",       "<cmd>FzfLua buffers<cr>",               desc = "Find buffers" },
 		{ "<leader>km",       "<cmd>FzfLua keymaps<cr>",               desc = "View keymaps" },
+		{ "<leader>sh",       "<cmd>FzfLua search_history<cr>",        desc = "Search history" },
+		{ "<leader>sc",       "<cmd>FzfLua git_bcommits<cr>",          desc = "Source control commits" },
+		{ "<leader>ch",       "<cmd>FzfLua command_history<cr>",       desc = "Command history" },
+		{ "gd",               "<cmd>FzfLua lsp_definitions<cr>",       desc = "LSP definitions" },
+		{ "gr",               "<cmd>FzfLua lsp_references<cr>",        desc = "LSP references" },
 
 		-- { "ss",  "<cmd>FzfLua spell_suggest<cr>",         desc = "Spell suggest" },
 		-- { "ft",  "<cmd>FzfLua filetypes<cr>",             desc = "Change file-types" },
-
-		-- { "ch",  "<cmd>FzfLua command_history<cr>",       desc = "Command history" },
-		-- { "sh",  "<cmd>FzfLua search_history<cr>",        desc = "Search history" },
 		-- { "ht",  "<cmd>FzfLua help_tags<cr>",             desc = "Help tags" },
 		-- { "hg",  "<cmd>FzfLua highlights<cr>",            desc = "Highlights" },
-		--
-		-- { "sc",  "<cmd>FzfLua git_bcommits<cr>",          desc = "Source control commits" },
-
-		-- { "ld",  "<cmd>FzfLua lsp_definitions<cr>",       desc = "LSP definitions" },
-		-- { "lr",  "<cmd>FzfLua lsp_references<cr>",        desc = "LSP references" },
 		-- { "li",  "<cmd>FzfLua lsp_implementations<cr>",   desc = "LSP implementations" },
 		-- { "ltd", "<cmd>FzfLua lsp_typedefs<cr>",          desc = "LSP type definitions" },
 		-- { "lds", "<cmd>FzfLua lsp_document_symbols<cr>",  desc = "LSP document symbols" },

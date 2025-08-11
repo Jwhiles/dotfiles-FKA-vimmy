@@ -12,14 +12,12 @@ local common_on_attach = function(client, bufnr)
 	end
 
 	map('gD', vim.lsp.buf.declaration, 'Go to declaration')
-	map('gd', vim.lsp.buf.definition, 'Go to definition')
 	map('K', vim.lsp.buf.hover, 'Show hover information')
 	map('gi', vim.lsp.buf.implementation, 'Go to implementation')
 	map('<C-k>', vim.lsp.buf.signature_help, 'Show signature help')
 	map('<space>D', vim.lsp.buf.type_definition, 'Go to type definition')
 	map('<space>rn', vim.lsp.buf.rename, 'Rename symbol')
 	map('<space>ca', vim.lsp.buf.code_action, 'Code actions')
-	map('gr', vim.lsp.buf.references, 'Show references')
   map('<leader>q', vim.diagnostic.setqflist, "Populate quick fix list with diagnostics")
   map('<leader>f', function() 
   	vim.lsp.buf.format { filter = function(client) return client.name ~= "ts_ls" end } 
@@ -37,6 +35,11 @@ return {
 				end
 			},
 			eslint = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			},
+			cssls = {
 				on_attach = function(client, bufnr) 
 					common_on_attach(client, bufnr)
 				end
