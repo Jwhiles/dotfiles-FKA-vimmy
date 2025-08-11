@@ -44,6 +44,11 @@ return {
 					common_on_attach(client, bufnr)
 				end
 			},
+			jsonls = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			},
 			gopls = {
 				on_attach = function(client, bufnr) 
 					common_on_attach(client, bufnr)
