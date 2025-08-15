@@ -4,7 +4,7 @@ It's the dotfiles. Intended to be managed with stow, which nicely makes symlinks
 
 ## How to run?
 * Clone the repo
-* Run `./install`
+* Run `just install`
 
 
 
