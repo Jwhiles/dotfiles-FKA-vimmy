@@ -10,7 +10,7 @@ return {
 		{ "grC",              "<cmd>FzfLua grep_cword<cr>",            desc = "Grep WORD under cursor" },
 		{ "<leader><space>",  "<cmd>FzfLua files<cr>",                 desc = "Find files" },
 		{ "<leader>fb",       "<cmd>FzfLua buffers<cr>",               desc = "Find buffers" },
-		{ "<leader>km",       "<cmd>FzfLua keymaps<cr>",               desc = "View keymaps" },
+		-- { "<leader>km",       "<cmd>FzfLua keymaps<cr>",               desc = "View keymaps" },
 		{ "<leader>sh",       "<cmd>FzfLua search_history<cr>",        desc = "Search history" },
 		{ "<leader>sc",       "<cmd>FzfLua git_bcommits<cr>",          desc = "Source control commits" },
 		{ "<leader>ch",       "<cmd>FzfLua command_history<cr>",       desc = "Command history" },

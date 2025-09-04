@@ -54,6 +54,11 @@ return {
 					common_on_attach(client, bufnr)
 				end
 			},
+			svelte = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			},
 			-- rust_analyzer = {
 			-- 	settings = {
 			-- 		['rust-analyzer'] = {
@@ -72,6 +77,11 @@ return {
 				on_attach = on_attach,
 				settings = { Lua = {} }
 			},
+			html = {
+				on_attach = function(client, bufnr) 
+					common_on_attach(client, bufnr)
+				end
+			}
 		}
 	},
 	inlay_hints = {
