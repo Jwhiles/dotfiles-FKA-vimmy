@@ -34,7 +34,8 @@ vim.keymap.set('n', 'Y', 'y$')
 
 nnoremap("<C-f>", "<cmd>silent !tmux neww tm-sesh<CR>", { desc = "Open tmux session picker" })
 
-
-
-
-
+nnoremap('<leader>j', '`J', { desc = "Jump to mark J" })
+nnoremap('<leader>k', '`K', { desc = "Jump to mark K" })
+nnoremap('<leader>l', '`L', { desc = "Jump to mark L" })
+nnoremap('<leader>sf', ':marks JKL<CR>', { desc = "Show marks" })
+-- TODO: write a function where `<leader>af` adds a mark
