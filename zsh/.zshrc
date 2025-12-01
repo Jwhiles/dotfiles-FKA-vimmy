@@ -5,6 +5,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-fzf-history-search
+    jj
 )
 
 source $ZSH/oh-my-zsh.sh
