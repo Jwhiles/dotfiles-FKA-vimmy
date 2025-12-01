@@ -39,3 +39,11 @@ export PATH="~/.local/bin:$PATH"
 [ -f ~/.zsh/keys ] && source ~/.zsh/keys
 [ -f ~/.work-zsh ] && source ~/.work-zsh
 [ -f ~/.home-zsh ] && source ~/.home-zsh
+
+# pnpm
+export PNPM_HOME="/Users/john/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
