@@ -4,7 +4,6 @@ alias gfco='git fetch origin && git checkout'
 alias john="tmuxinator start johncom"
 alias coach="tmuxinator start coach"
 alias ls='eza --git --icons --color=always --group-directories-first'
-alias cd='z'
 alias pr='gh pr create'
 alias pro='gh pr view --web'
 alias vim='nvim'
