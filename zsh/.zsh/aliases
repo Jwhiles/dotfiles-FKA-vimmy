@@ -7,3 +7,8 @@ alias ls='eza --git --icons --color=always --group-directories-first'
 alias pr='gh pr create'
 alias pro='gh pr view --web'
 alias vim='nvim'
+alias test-branch=yarn jest $(git diff main...HEAD --name-only --diff-filter=A | grep -E '\.(test|spec)\.(ts|tsx|js|jsx)$')
+
+clog() {
+  obsidian daily:append content="$(date +%H:%M) $*"
+}
