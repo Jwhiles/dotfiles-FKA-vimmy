@@ -52,3 +52,6 @@ o.confirm = true
 o.scrolloff = 5 -- keep 5 lines above/below cursor
 o.splitbelow = true
 o.splitright = true
+
+
+vim.opt.swapfile = false
