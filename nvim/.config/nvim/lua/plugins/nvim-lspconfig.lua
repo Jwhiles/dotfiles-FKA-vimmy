@@ -62,22 +62,22 @@ return {
 					common_on_attach(client, bufnr)
 				end,
 			},
-			-- rust_analyzer = {
-			-- 	settings = {
-			-- 		['rust-analyzer'] = {
-			-- 			diagnostics = {
-			-- 				enable = false,
-			-- 			}
-			-- 		}
-			-- 	}
-			-- },
+			rust_analyzer = {
+				settings = {
+					["rust-analyzer"] = {
+						-- diagnostics = {
+						-- 	enable = false,
+						-- },
+					},
+				},
+			},
 			lua_ls = {
 				on_init = function(client)
 					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 						workspace = { library = { vim.env.VIMRUNTIME } },
 					})
 				end,
-				on_attach = on_attach,
+				on_attach = common_on_attach,
 				settings = { Lua = {} },
 			},
 			html = {

@@ -32,7 +32,7 @@ eval "$(zoxide init zsh)"
 export PATH="/usr/local/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-export PATH="~/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 
 [ -f ~/.zsh/aliases ] && source ~/.zsh/aliases
