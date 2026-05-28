@@ -20,11 +20,7 @@ local common_on_attach = function(client, bufnr)
 	map("<space>ca", vim.lsp.buf.code_action, "Code actions")
 	map("<leader>q", vim.diagnostic.setqflist, "Populate quick fix list with diagnostics")
 	map("<leader>f", function()
-		vim.lsp.buf.format({
-			filter = function(client)
-				return client.name ~= "ts_ls"
-			end,
-		})
+		require("conform").format({ bufnr = bufnr, lsp_format = "fallback" })
 	end, "Format buffer")
 end
 

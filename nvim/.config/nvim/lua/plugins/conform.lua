@@ -3,6 +3,7 @@ return {
 	opts = {},
 	config = function()
 		require("conform").setup({
+			format_on_save = { lsp_format = "fallback", timeout_ms = 500 },
 			formatters_by_ft = {
 				typescript = { "prettierd", "prettier", stop_after_first = true },
 				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
@@ -13,7 +14,6 @@ return {
 				css = { "prettierd", "prettier", stop_after_first = true },
 				lua = { "stylua" },
 				go = { "goimports", "gofmt" },
-				-- You can also customize some of the format options for the filetype
 				rust = { "rustfmt", lsp_format = "fallback" },
 			},
 		})
