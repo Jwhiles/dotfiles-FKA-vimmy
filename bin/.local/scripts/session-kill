@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-session_to_kill="$(tmux list-sessions | sed -n '/(attached)/s/:.*//p')"
-session_to_switch="$(tmux list-sessions | sed -n '/(attached)/!s/:.*//p' | head -n 1)"
+session_to_kill="$(tmux display-message -p '#S')"
+session_to_switch="$(tmux list-sessions -F '#{?session_attached,,#S}' | grep -m 1 .)"
 
-if [[ ! -z $session_to_switch ]]; then
-    tmux switch-client -t $session_to_switch
+if [[ -n $session_to_switch ]]; then
+    tmux switch-client -t "=$session_to_switch"
 fi
 
-tmux kill-session -t $session_to_kill
-
+tmux kill-session -t "=$session_to_kill"

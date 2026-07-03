@@ -1,31 +1,107 @@
 #!/usr/bin/env bash
 
+history_file="${XDG_CACHE_HOME:-$HOME/.cache}/tm-sesh-history"
+
+# tmux session names may not contain . or :
+session_name() {
+    basename "$1" | tr '.:' _
+}
+
+# Most recent picks first — dirs that still exist, session names still running
+recent_picks() {
+    [[ -f $history_file ]] || return 0
+    while IFS= read -r entry; do
+        if [[ $entry == /* ]]; then
+            [[ -d $entry ]] && printf '%s\n' "$entry"
+        else
+            tmux has-session -t "=$entry" 2> /dev/null && printf '%s\n' "$entry"
+        fi
+    done < "$history_file"
+}
+
+remember() {
+    mkdir -p "$(dirname "$history_file")"
+    { printf '%s\n' "$1"; grep -vFx "$1" "$history_file" 2> /dev/null; } | head -20 > "$history_file.tmp"
+    mv "$history_file.tmp" "$history_file"
+}
+
+# Recent picks, then project dirs, then any running sessions not already
+# reachable through an earlier entry
+candidates() {
+    {
+        recent_picks
+        find ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d
+        printf '\036\n'
+        tmux list-sessions -F '#S' 2> /dev/null
+    } | awk '
+        $0 == "\036" { live = 1; next }
+        seen[$0]++ { next }
+        !live { print; sub(/^.*\//, ""); gsub(/[.:]/, "_"); covered[$0] = 1; next }
+        !covered[$0] { print }
+    '
+}
+
+# Live sessions preview their windows and what's on screen; unstarted
+# dirs preview their contents
+preview() {
+    local entry=$1 name
+    name=$(session_name "$entry")
+    if tmux has-session -t "=$name" 2> /dev/null; then
+        tmux list-windows -t "=$name" -F '#{?window_active,● ,  }#I: #W'
+        echo
+        tmux capture-pane -ep -t "=$name:"
+    elif [[ $entry == /* ]]; then
+        if command -v eza > /dev/null; then
+            eza -a --group-directories-first --color=always "$entry"
+        else
+            ls -A "$entry"
+        fi
+    else
+        echo "new session: $name"
+    fi
+}
+
+if [[ $1 == --preview ]]; then
+    preview "$2"
+    exit 0
+fi
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d | fzf)
+    result=$(candidates | fzf --print-query --bind 'alt-enter:print-query' \
+        --header 'enter: open · alt-enter: new session named after query' \
+        --preview "'$0' --preview {}" --preview-window 'right,45%,border-left')
+    [[ $? -eq 130 ]] && exit 0
+    selected=$(sed -n 2p <<< "$result")
+    [[ -z $selected ]] && selected=$(sed -n 1p <<< "$result")
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+remember "$selected"
+
+if [[ $selected == /* ]]; then
+    session_dir=$selected
+else
+    session_dir=$HOME
+fi
+selected_name=$(session_name "$selected")
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    tmux new-session -s "$selected_name" -c "$session_dir"
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t "=$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$session_dir"
 fi
 
-if [ ! "$TMUX" ]; then
-  tmux attach -t $selected_name
-  # main || tmux new -s main
-else 
-  tmux switch-client -t $selected_name
+if [[ -z $TMUX ]]; then
+    tmux attach -t "=$selected_name"
+else
+    tmux switch-client -t "=$selected_name"
 fi
-
