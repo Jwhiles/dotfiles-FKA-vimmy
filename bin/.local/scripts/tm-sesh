@@ -26,19 +26,39 @@ remember() {
 }
 
 # Recent picks, then project dirs, then any running sessions not already
-# reachable through an earlier entry
+# reachable through an earlier entry. Entries with a live session are
+# marked ● — every line carries a two-column prefix, see strip_marker.
 candidates() {
     {
-        recent_picks
-        find ~/ ~/work ~/personal -mindepth 1 -maxdepth 1 -type d
-        printf '\036\n'
         tmux list-sessions -F '#S' 2> /dev/null
-    } | awk '
-        $0 == "\036" { live = 1; next }
+        printf '\036\n'
+        recent_picks
+        find ~/work ~/personal -mindepth 1 -maxdepth 1 -type d
+    } | awk -v mark="$(printf '\033[32m●\033[0m ')" -v home="$HOME" '
+        $0 == "\036" { names_done = 1; next }
+        !names_done { live[++n] = $0; is_live[$0] = 1; next }
         seen[$0]++ { next }
-        !live { print; sub(/^.*\//, ""); gsub(/[.:]/, "_"); covered[$0] = 1; next }
-        !covered[$0] { print }
+        {
+            name = $0
+            sub(/^.*\//, "", name)
+            gsub(/[.:]/, "_", name)
+            covered[name] = 1
+            disp = $0
+            if (index(disp, home "/") == 1) disp = "~" substr(disp, length(home) + 1)
+            print (is_live[name] ? mark : "  ") disp
+        }
+        END { for (i = 1; i <= n; i++) if (!covered[live[i]]) print mark live[i] }
     '
+}
+
+# Undo the display formatting fzf hands back: drop the two-column prefix
+# (ANSI already stripped by --ansi) and re-expand the leading ~
+from_display() {
+    local line=$1
+    line=${line#'● '}
+    line=${line#'  '}
+    [[ $line == '~/'* ]] && line=$HOME/${line#'~/'}
+    printf '%s\n' "$line"
 }
 
 # Live sessions preview their windows and what's on screen; unstarted
@@ -62,19 +82,28 @@ preview() {
 }
 
 if [[ $1 == --preview ]]; then
-    preview "$2"
+    preview "$(from_display "$2")"
+    exit 0
+fi
+
+if [[ $1 == --list ]]; then
+    candidates
     exit 0
 fi
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    result=$(candidates | fzf --print-query --bind 'alt-enter:print-query' \
+    result=$(candidates | fzf --ansi --print-query --bind 'alt-enter:print-query' \
         --header 'enter: open · alt-enter: new session named after query' \
         --preview "'$0' --preview {}" --preview-window 'right,45%,border-left')
     [[ $? -eq 130 ]] && exit 0
     selected=$(sed -n 2p <<< "$result")
-    [[ -z $selected ]] && selected=$(sed -n 1p <<< "$result")
+    if [[ -n $selected ]]; then
+        selected=$(from_display "$selected")
+    else
+        selected=$(sed -n 1p <<< "$result")
+    fi
 fi
 
 if [[ -z $selected ]]; then
