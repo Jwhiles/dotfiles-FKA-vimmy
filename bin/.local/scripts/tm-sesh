@@ -94,8 +94,8 @@ fi
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    result=$(candidates | fzf --ansi --print-query --bind 'alt-enter:print-query' \
-        --header 'enter: open · alt-enter: new session named after query' \
+    result=$(candidates | fzf --ansi --print-query --bind 'ctrl-h:print-query' \
+        --header 'enter: open · ctrl-h: new session named after query' \
         --preview "'$0' --preview {}" --preview-window 'right,45%,border-left')
     [[ $? -eq 130 ]] && exit 0
     selected=$(sed -n 2p <<< "$result")

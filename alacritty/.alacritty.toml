@@ -3,11 +3,6 @@ general.import = ["~/.config/alacritty/themes/themes/flexoki-light.toml"]
 [env]
 TERM = "xterm-256color"
 
-[window]
-# Left Option acts as Alt (needed for alt-enter in fzf); right Option
-# still types special characters
-option_as_alt = "OnlyLeft"
-
 [font]
 size = 18.0
 
