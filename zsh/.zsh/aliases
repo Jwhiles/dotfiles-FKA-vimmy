@@ -6,6 +6,8 @@ alias coach="tmuxinator start coach"
 alias ls='eza --git --icons --color=always --group-directories-first'
 alias pr='gh pr create'
 alias pro='gh pr view --web'
+# publish preview in metamask core
+alias prp='gh pr comment -b "@metamaskbot publish-preview"'
 alias vim='nvim'
 test-branch() {
   yarn jest $(git diff main...HEAD --name-only --diff-filter=A | grep -E '\.(test|spec)\.(ts|tsx|js|jsx)$')
