@@ -25,8 +25,8 @@ remember() {
     mv "$history_file.tmp" "$history_file"
 }
 
-# Recent picks, then project dirs, then any running sessions not already
-# reachable through an earlier entry. Entries with a live session are
+# Live sessions first (so they sit at the bottom of the fzf list), then
+# recent picks, then project dirs. Entries with a live session are
 # marked ● — every line carries a two-column prefix, see strip_marker.
 candidates() {
     {
@@ -45,9 +45,14 @@ candidates() {
             covered[name] = 1
             disp = $0
             if (index(disp, home "/") == 1) disp = "~" substr(disp, length(home) + 1)
-            print (is_live[name] ? mark : "  ") disp
+            if (is_live[name]) live_lines[++nl] = mark disp
+            else dead_lines[++nd] = "  " disp
         }
-        END { for (i = 1; i <= n; i++) if (!covered[live[i]]) print mark live[i] }
+        END {
+            for (i = 1; i <= nl; i++) print live_lines[i]
+            for (i = 1; i <= n; i++) if (!covered[live[i]]) print mark live[i]
+            for (i = 1; i <= nd; i++) print dead_lines[i]
+        }
     '
 }
 
