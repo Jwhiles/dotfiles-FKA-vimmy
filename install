@@ -17,4 +17,5 @@ echo "stowing alacritty"
 stow alacritty
 echo "stowing dig"
 stow dig
-
+echo "stowing jj"
+stow jj

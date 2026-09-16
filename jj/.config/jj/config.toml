@@ -1,0 +1,10 @@
+[user]
+name = "John Whiles"
+email = "john@johnwhiles.com"
+
+[ui]
+default-command = "log"
+
+[remotes.origin]
+auto-track-bookmarks = "*"
+
