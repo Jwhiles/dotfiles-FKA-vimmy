@@ -2,8 +2,33 @@
 name = "John Whiles"
 email = "john@johnwhiles.com"
 
+
+[aliases]
+log-recent = [ "log", "-r", "default() & recent()" ]
+push = [
+  "util", 
+  "exec", 
+  "--", 
+  "sh", 
+  "-c", 
+  "npm run typecheck && npm run lint && npm run test:run && jj git push \"$@\"", 
+  ""
+]
+
+
+[revset-aliases]
+"closest_pushable(to)" = """
+heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))
+"""
+"default()" = """
+coalesce(trunk(),root())::present(@) | ancestors(visible_heads() & recent(), 5)
+"""
+"recent()" = """
+committer_date(after:"1 month ago")
+"""
+
 [ui]
-default-command = "log"
+default-command = "log-recent"
 
 [remotes.origin]
 auto-track-bookmarks = "*"
