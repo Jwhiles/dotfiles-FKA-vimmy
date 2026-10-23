@@ -20,6 +20,7 @@ alias m='jj describe'
 alias d='jj diff'
 alias e='jj edit'
 alias p='jj git push'
+alias f='jj git fetch'
 alias a='jj bookmark advance'
 
 clog() {
