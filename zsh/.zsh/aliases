@@ -23,6 +23,8 @@ alias p='jj git push'
 alias f='jj git fetch'
 alias a='jj bookmark advance'
 
+alias sk="npx @oxide/skepsis"
+
 clog() {
   obsidian daily:append content="$(date +%H:%M) $*"
 }
