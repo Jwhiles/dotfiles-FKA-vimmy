@@ -22,6 +22,7 @@ alias e='jj edit'
 alias p='jj git push'
 alias f='jj git fetch'
 alias a='jj bookmark advance'
+alias rom="jj rebase -o 'trunk()'"
 
 alias sk="npx @oxide/skepsis"
 
